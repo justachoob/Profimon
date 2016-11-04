@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>userid</th>
       <th>Pname</th>
       <th>Faculty</th>
       <th>Current gpa</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @profiles.each do |profile| %>
       <tr>
+        <td><%= profile.userid %></td>
         <td><%= profile.pname %></td>
         <td><%= profile.faculty %></td>
         <td><%= profile.current_gpa %></td>
