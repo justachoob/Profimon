@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pname</th>
+      <th>Faculty</th>
+      <th>Current gpa</th>
+      <th>Num of courses taken</th>
+      <th>Courses taken</th>
+      <th>Badges</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.pname %></td>
+        <td><%= profile.faculty %></td>
+        <td><%= profile.current_gpa %></td>
+        <td><%= profile.num_of_courses_taken %></td>
+        <td><%= profile.courses_taken %></td>
+        <td><%= profile.badges %></td>
+        <td><%= link_to 'Show', profile %></td>
+        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Profile', new_profile_path %>
