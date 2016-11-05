@@ -5,6 +5,6 @@ class Profile < ApplicationRecord
     def default_values
       self.current_gpa  ||= 4.0
       self.num_of_courses_taken ||= 0
-			self.courses_taken ||=0
+	
     end
 end
