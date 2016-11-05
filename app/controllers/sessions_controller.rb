@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
+
   
   #Empty action with html for login
   def new
+    if session[:user_id]
+      redirect_to user_path(:id => session[:user_id])
+    end
   end
 
   #Login action 

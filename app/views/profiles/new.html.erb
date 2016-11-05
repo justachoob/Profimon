@@ -5,5 +5,5 @@
 
 <%= render 'form', profile: @profile %>
 
-<%= link_to 'Back', profiles_path %>
+<%= link_to 'Back', :controller => "users" , :action => "show", :id => session[:user_id] %>
 </div>
