@@ -48,7 +48,7 @@ development:
 
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
-  #   log, notice, warning, error, fatal, and panic
+  #   log, notice, warning, errorc, fatal, and panic
   # Defaults to warning.
   #min_messages: notice
 
@@ -59,9 +59,11 @@ test:
   <<: *default
   adapter: postgresql
   database: profimon_test
+  encoding: SQL_ASCII
   username: ubuntu
+  pool: 5
   
-
+  
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
