@@ -6,7 +6,7 @@
 <p> <%= @user.email %> </p> <br>
 
 <%= link_to 'Admin' , "/admin/#{@user.id}" %>
-
+<%= link_to 'Create profile', new_profile_path%>
 <%= link_to 'Logout' , logout_path , method: :delete %>
 
 </div>

@@ -1,0 +1,36 @@
+<div class="main">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Profile name:</strong>
+  <%= @profile.pname %>
+</p>
+
+<p>
+  <strong>Faculty:</strong>
+  <%= @profile.faculty %>
+</p>
+
+<p>
+  <strong>Current gpa:</strong>
+  <%= @profile.current_gpa %>
+</p>
+
+<p>
+  <strong>Number of courses taken:</strong>
+  <%= @profile.num_of_courses_taken %>
+</p>
+
+<p>
+  <strong>Courses taken:</strong>
+  <%= @profile.courses_taken %>
+</p>
+
+<p>
+  <strong>Badges:</strong>
+  <%= @profile.badges %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
+</div>

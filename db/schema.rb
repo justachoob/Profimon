@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103055525) do
+ActiveRecord::Schema.define(version: 20161104182653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "pname"
+    t.string   "faculty"
+    t.float    "current_gpa"
+    t.integer  "num_of_courses_taken"
+    t.string   "courses_taken"
+    t.string   "badges"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "UserId"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +34,14 @@ ActiveRecord::Schema.define(version: 20161103055525) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.boolean  "admin",           default: false
+  end
+
+  create_table "widgets", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "stock"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

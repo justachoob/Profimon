@@ -1,0 +1,47 @@
+<%= form_for(profile) do |f| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pname,'Profile name' %><br>
+    <%= f.text_field :pname ,class: 'input_field_center'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :faculty ,'Falculty name'%><br>
+    <%= f.text_field :faculty ,class: 'input_field_center'%>
+  </div>
+<!--
+  <div class="field">
+    <%= f.label :current_gpa ,'current gpa:'%><br>
+    <%= f.text_field :current_gpa %>
+  </div>
+
+  <div class="field">
+    <%= f.label :num_of_courses_taken,'Number of Course Taken' %><br>
+    <%= f.number_field :num_of_courses_taken %>
+  </div>
+
+  <div class="field">
+    <%= f.label :courses_taken,'Courses Taken' %><br>
+    <%= f.text_field :courses_taken %>
+  </div>
+
+  <div class="field">
+    <%= f.label :badges %><br>
+    <%= f.text_field :badges %>
+  </div>
+-->
+  <div class="actions">
+    <%= f.submit "Create Profile",class:"form_button" %>
+  </div>
+<% end %>
