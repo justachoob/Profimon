@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
 	has_secure_password
+	has_many :profile
 
  	EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
 	#PASS_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,25}$/
