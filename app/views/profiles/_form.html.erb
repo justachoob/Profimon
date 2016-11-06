@@ -18,7 +18,8 @@
 
   <div class="field">
     <%= f.label :faculty ,'Faculty name'%><br>
-    <%= f.text_field :faculty ,class: 'input_field_center'%>
+    <%= f.select :faculty, [['Applied Sciences','Applied Sciences'],['Arts and Social Sciences','Arts and Social Sciences'],['Beedie School of Business','Beedie School of Business'],
+    ['Communication, Art and Technology','Communication, Art and Technology'],['Education', 'Education'],['Environment','Environment']]%>
   </div>
 
   <div class="actions">

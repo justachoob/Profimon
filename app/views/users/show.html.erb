@@ -8,7 +8,7 @@
 <% @user.profile.each do |profile| %>
 	<p>
 	  <strong>Profile name:</strong>
-	  <%= profile.pname %>
+	  <%= link_to profile.pname, profile %>
 	</p>
 
 	<p>
@@ -41,6 +41,5 @@
 
 <%= link_to 'Admin' , "/admin/#{@user.id}" %>
 <%= link_to 'Create profile', new_profile_path%>
-<%= link_to 'Logout' , logout_path , method: :delete %>
 
 </div>

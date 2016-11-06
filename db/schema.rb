@@ -37,4 +37,6 @@ ActiveRecord::Schema.define(version: 20161105011846) do
     t.boolean  "admin",           default: false
   end
 
+  #widgets removed
+
 end
