@@ -1,0 +1,16 @@
+<!-- Test to see if users were added to database -->
+<div class="main">
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+<% @users.each do |u| %>
+	<p> <%= u.name %> </p>
+	<p> <%= u.id %> </p> 
+	<p> <%= u.admin %> </p> <br>
+
+<%end%>
+
+<%= debug(params) if Rails.env.development? %>
+</div>

@@ -1,0 +1,18 @@
+<div class="main">
+
+<h1> Profimon </h1>
+
+<h4 class="subtitle"> Battle the profs at SFU! </h4>
+
+<hr>
+
+	<% if flash[:notice] %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+	<%= render 'login' %>
+	
+
+	<p class="sign_up">Don't have an account yet? <%= link_to 'Sign Up!' , new_user_path, class: 'form_link' %></p>
+
+</div>

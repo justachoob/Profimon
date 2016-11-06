@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profimon</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar  navbar-inverse">
+    <div class="navbar-class">
+      PROFIMONS
+       <% if session[:user_id] != nil %>
+          <%= link_to 'My user page' , user_path( :id => session[:user_id]) %>
+          <%= link_to 'Logout' , logout_path , method: :delete %>
+        <% end %>
+    </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>
