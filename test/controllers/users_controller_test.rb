@@ -8,8 +8,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should get create" do
     get users_url
-    assert_response :success
-    #assert_redirected_to page_url(title: 'login')
+    #assert_response :success
+    assert_redirected_to login_url
   end
   
 #  test "should get edit" do
