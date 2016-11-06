@@ -16,6 +16,11 @@
 
 @import url(//fonts.googleapis.com/css?family=Arvo);
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
    background-color: #440000;
    font-family: 'Arvo', Verdana, sans-serif;
@@ -72,4 +77,21 @@ h4.subtitle {
   text-align: center;
   margin-top: 20px;
   color: red;
+}
+
+.navbar-class {
+  background-color: black;
+  padding: 20px;
+}
+
+.navbar-class-right {
+  float: right;
+}
+
+.navbar-class-right a {
+  color: #FF8;
+  text-decoration: none;
+  margin-left: 20px;
+  display: inline-block;
+  margin-top: 5px;
 }

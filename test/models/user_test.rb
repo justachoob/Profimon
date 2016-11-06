@@ -26,6 +26,23 @@ class UserTest < ActiveSupport::TestCase
   	assert_not user.valid?
   end
 
+  test "valid password max length" do
+    user = User.new
+  	user.name = "Subject"
+  	user.email = "example@example.com"
+  	user.password = "test1234test1234test1234test1234"
+  	assert_not user.valid?
+  
+  end
+    
+  test "valid password regex" do
+    user = User.new
+  	user.name = "Subject"
+  	user.email = "example@example.com"
+  	user.password = "test123$@#@1234st1234"
+  	assert_not user.valid?
+  
+  end
 
 
 
