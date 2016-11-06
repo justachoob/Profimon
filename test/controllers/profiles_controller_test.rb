@@ -2,10 +2,12 @@ require 'test_helper'
 
 class ProfilesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:one)
     @profile = profiles(:one)
   end
 
   test "should get index" do
+    log_in_as(users(:one))
     #gives error no route matches show, profile missing keys id
     get profile_url, id: @profile
     #get :show, id: @post
