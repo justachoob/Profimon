@@ -95,3 +95,8 @@ h4.subtitle {
   display: inline-block;
   margin-top: 5px;
 }
+
+.radio_buttons {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
