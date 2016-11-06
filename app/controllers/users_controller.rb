@@ -24,9 +24,9 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       if @user.admin
         session[:admin] = true;
-        redirect_to users_path
+        redirect_to user_path(:id => @user.id)
       else
-  		  redirect_to users_path
+  		  redirect_to user_path(:id => @user.id)
       end
   	else 
   		flash[:notice] = "Error with your signup"
