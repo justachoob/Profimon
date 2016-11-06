@@ -42,11 +42,13 @@
     <%= f.radio_button :admin, true %>
     <%= f.label :admin, "Admin" %>
   </div>
-  
+
   <br>
 
   <div class="actions">
-    <%= f.submit "Create User", class: "form_button" %>
+    <%= link_to 'Back' , root_path, class: 'form_link' %> <%= f.submit "Create User", class: "form_button" %>
   </div>
+
+
 
 <% end %>
