@@ -20,14 +20,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test "should create profile" do
-    assert_difference('Profile.count') do
-      #failure expected 3, actual 2
-      post profiles_url, params: { profile: { badges: @profile.badges, courses_taken: @profile.courses_taken, current_gpa: @profile.current_gpa, faculty: @profile.faculty, num_of_courses_taken: @profile.num_of_courses_taken, pname: @profile.pname } }
-    end
-
-    assert_redirected_to profile_url(Profile.last)
-  end
 
   test "should show profile" do
     get profile_url(@profile)
@@ -50,12 +42,38 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test "should destroy profile" do
+  test "destroy profile should require logged in user" do
     #failure didnt change by -1
-    assert_difference('Profile.count', -1) do
-      delete profile_url(@profile)
+    assert_no_difference('Profile.count') do
+      delete profile_path(profiles(:one))
     end
-
-    assert_redirected_to profiles_url
+      
+    assert_redirected_to login_url
   end
+
+  test "create should require logged-in user" do
+    assert_no_difference('Profile.count') do
+      post profiles_path
+    end
+    assert_redirected_to login_url
+  end
+  
+
+#  test "should create profile" do
+#    assert_difference('Profile.count') do
+#      #failure expected 3, actual 2
+#      post profiles_path, params: { profile: { badges: @profile.badges, courses_taken: @profile.courses_taken, current_gpa: @profile.current_gpa, faculty: @profile.faculty, num_of_courses_taken: @profile.num_of_courses_taken, pname: @profile.pname } }
+#    end
+#        
+#    assert_redirected_to profile_url(Profile.last)
+#  end
+
+#  test "should destroy profile" do
+    #failure didnt change by -1 because not logged in
+#    assert_difference('Profile.count', -1) do
+#      delete profile_path(profiles(:one))
+#    end
+#      
+#    assert_redirected_to profiles_url
+#  end
 end

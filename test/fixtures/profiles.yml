@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  pname: MyString
+  pname: testuser1
   faculty: MyString
-  current_gpa: 1.5
+  current_gpa: 4.0
   num_of_courses_taken: 1
   courses_taken: MyString
   badges: MyString
 
 two:
-  pname: MyString
+  pname: testuser2
   faculty: MyString
   current_gpa: 1.5
   num_of_courses_taken: 1

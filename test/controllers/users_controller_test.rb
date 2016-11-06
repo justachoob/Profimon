@@ -22,7 +22,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     #assert_response :success
     assert_redirected_to login_url
   end
-  
+
+
+# requires class UsersController < ApplicationController
+#  before_action :logged_in_user, only: [:edit, :update]
+#  to be built in
+#
+#  test "should redirect edit when not logged in" do
+#    get edit_user_path(@user)
+#    assert_not flash.empty?
+#    assert_redirected_to login_url
+#  end
 #  test "should get edit" do
     #log_in_as(@user)
 #    get edit_user_url, id: @user
