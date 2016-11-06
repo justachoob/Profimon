@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20161105011846) do
     t.string   "badges"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.string   "UserId"
     t.integer  "user_id"
   end
 
@@ -36,7 +35,5 @@ ActiveRecord::Schema.define(version: 20161105011846) do
     t.datetime "updated_at",                      null: false
     t.boolean  "admin",           default: false
   end
-
-  #widgets removed
 
 end

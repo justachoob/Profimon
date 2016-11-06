@@ -61,9 +61,10 @@ test:
   database: profimon_test
   encoding: SQL_ASCII
   username: ubuntu
+  template: template0
   pool: 5
-  
-  
+
+
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
