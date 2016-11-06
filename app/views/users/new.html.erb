@@ -3,7 +3,7 @@
 <h1>Sign Up for Profimon</h1>
 
 <% if flash[:notice] %>
-		<div class="notice"><%= flash[:notice] %></div>
+		<div class="notice"><%= flash[:error] %></div>
 <% end %>
 
 <%= render 'signup_form', user: @user %>
