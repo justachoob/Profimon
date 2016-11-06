@@ -15,6 +15,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 #  test "should get edit" do
 #    get edit_user_url
 #    assert_response :success
+#    #this will issue an error because not logged in!
 #  end
   
 
