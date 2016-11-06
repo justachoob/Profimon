@@ -11,7 +11,7 @@
   <body>
     <header class="navbar navbar-inverse">
     <div class="navbar-class">
-      <%= link_to 'PROFIMON' , root_path , :style => "color: white; font-size: 1.5em; text-decoration: none" %>
+      <span style="color: white; font-size: 1.5em; text-decoration: none">PROFIMON</span>
       <div class="navbar-class-right">
        <% if session[:user_id] != nil %>
           <%= link_to 'PROFILE' , user_path( :id => session[:user_id]) %>

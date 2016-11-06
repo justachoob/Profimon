@@ -2,11 +2,11 @@ class UsersController < ApplicationController
 
   #Action to restrict access if user is not logged in
   #Must be added to every controller if you want to restrict access
-  before_action :confirm_logged_in, :except => [:new , :create] 
+  before_action :confirm_logged_in, :except => [:new , :create]
 
 
 
-  def index 
+  def index
   	@users = User.all
   end
 
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       else
   		  redirect_to user_path(:id => @user.id)
       end
-  	else 
+  	else
   		flash[:notice] = "Error with your signup"
   		redirect_to(new_user_path)
   	end
@@ -42,6 +42,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :id, :admin)
-  end 
+  end
 
 end
