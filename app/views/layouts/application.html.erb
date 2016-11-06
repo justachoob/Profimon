@@ -9,13 +9,15 @@
   </head>
 
   <body>
-    <header class="navbar  navbar-inverse">
+    <header class="navbar navbar-inverse">
     <div class="navbar-class">
-      PROFIMONS
+      <%= link_to 'PROFIMON' , root_path , :style => "color: white; font-size: 1.5em; text-decoration: none" %>
+      <div class="navbar-class-right">
        <% if session[:user_id] != nil %>
-          <%= link_to 'My user page' , user_path( :id => session[:user_id]) %>
-          <%= link_to 'Logout' , logout_path , method: :delete %>
+          <%= link_to 'PROFILE' , user_path( :id => session[:user_id]) %>
+          <%= link_to 'LOGOUT' , logout_path , method: :delete %>
         <% end %>
+      </div>
     </div>
     </header>
     <%= yield %>
