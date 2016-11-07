@@ -14,6 +14,9 @@
       <span style="color: white; font-size: 1.5em; text-decoration: none">PROFIMON</span>
       <div class="navbar-class-right">
        <% if session[:user_id] != nil %>
+          <% if session[:admin] == true %>
+            <%= link_to 'ADMIN SETTINGS' , users_path %>
+          <% end %>
           <%= link_to 'PROFILE' , user_path( :id => session[:user_id]) %>
           <%= link_to 'LOGOUT' , logout_path , method: :delete %>
         <% end %>
