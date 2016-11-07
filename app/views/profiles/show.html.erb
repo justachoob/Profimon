@@ -1,10 +1,9 @@
 <div class="main">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Profile name:</strong>
-  <%= @profile.pname %>
-</p>
+<h1><%= @profile.pname %></h1>
+
+<div style="text-align: center">
 
 <p>
   <strong>Faculty:</strong>
@@ -12,7 +11,7 @@
 </p>
 
 <p>
-  <strong>Current gpa:</strong>
+  <strong>Current GPA:</strong>
   <%= @profile.current_gpa %>
 </p>
 
@@ -22,13 +21,13 @@
 </p>
 
 <p>
-  <strong>Courses taken:</strong>
-  <%= @profile.courses_taken %>
+  <strong>Courses taken:</strong> None
+  <!--<%= @profile.courses_taken %>-->
 </p>
 
 <p>
-  <strong>Badges:</strong>
-  <%= @profile.badges %>
+  <strong>Badges:</strong> None
+  <!--<%= @profile.badges %>-->
 </p>
 
 <p>
@@ -36,6 +35,10 @@
   <%= link_to @profile.user.name, @profile.user %>
 </p>
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', user_path( :id => session[:user_id]) %>
+</div>
+
+<p style="text-align: center; margin-top: 30px;">
+<%= link_to 'Edit', edit_profile_path(@profile), class: "profile_form_button", style: "margin-right: 20px;" %>
+<%= link_to 'Back', user_path( :id => session[:user_id]), class: "profile_form_button" %>
+</p>
 </div>
