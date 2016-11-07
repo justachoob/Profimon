@@ -12,17 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pname,'Profile name' %><br>
+    <%= f.label :pname,'Character Name:' %><br>
     <%= f.text_field :pname ,class: 'input_field_center'%>
   </div>
 
   <div class="field">
-    <%= f.label :faculty ,'Faculty name'%><br>
+    <%= f.label :faculty ,'Faculty:'%><br>
     <%= f.select :faculty, [['Applied Sciences','Applied Sciences'],['Arts and Social Sciences','Arts and Social Sciences'],['Beedie School of Business','Beedie School of Business'],
-    ['Communication, Art and Technology','Communication, Art and Technology'],['Education', 'Education'],['Environment','Environment']]%>
+    ['Communication, Art and Technology','Communication, Art and Technology'],['Education', 'Education'],['Environment','Environment'],['Health Sciences','Health Sciences'],['Science','Science']],
+    { }, { class: "faculty_select" }%>
   </div>
 
+  <br>
+
   <div class="actions">
-    <%= f.submit "Create Profile",class:"form_button" %>
+    <%= link_to 'Back' , root_path, class: 'form_link' %><%= f.submit "Create Profile",class:"form_button" %>
   </div>
 <% end %>
