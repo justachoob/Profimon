@@ -1,6 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
+  user_id: 1
   pname: testuser1
   faculty: MyString
   current_gpa: 4.0
@@ -9,6 +11,8 @@ one:
   badges: MyString
 
 two:
+  id: 2
+  user_id: 2
   pname: testuser2
   faculty: MyString
   current_gpa: 1.5

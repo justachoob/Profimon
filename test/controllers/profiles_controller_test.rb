@@ -9,7 +9,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     log_in_as(users(:one))
     #gives error no route matches show, profile missing keys id
-    get profile_url, id: @profile
+    get profile_url(@profile)
     #get :show, id: @post
     #get profile_url
     assert_response :success
@@ -61,21 +61,23 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   end
   
 
-#  test "should create profile" do
-#    assert_difference('Profile.count') do
-#      #failure expected 3, actual 2
-#      post profiles_path, params: { profile: { badges: @profile.badges, courses_taken: @profile.courses_taken, current_gpa: @profile.current_gpa, faculty: @profile.faculty, num_of_courses_taken: @profile.num_of_courses_taken, pname: @profile.pname } }
-#    end
-#        
-#    assert_redirected_to profile_url(Profile.last)
-#  end
+  test "should create profile" do
+    assert_difference('Profile.count') do
+      log_in_as(users(:one))
+      #failure expected 3, actual 2
+      post profiles_path, params: { profile: { badges: @profile.badges, courses_taken: @profile.courses_taken, current_gpa: @profile.current_gpa, faculty: @profile.faculty, num_of_courses_taken: @profile.num_of_courses_taken, pname: @profile.pname } }
+    end
+        
+    assert_redirected_to profile_url(Profile.last)
+  end
 
-#  test "should destroy profile" do
+  test "should destroy profile" do
     #failure didnt change by -1 because not logged in
-#    assert_difference('Profile.count', -1) do
-#      delete profile_path(profiles(:one))
-#    end
-#      
-#    assert_redirected_to profiles_url
-#  end
+    assert_difference('Profile.count', -1) do
+      log_in_as(users(:one))
+      delete profile_path(profiles(:one))
+    end
+      
+    assert_redirected_to profiles_url
+  end
 end
