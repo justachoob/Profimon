@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def confirm_admin
   	unless session[:admin]
   		flash[:notice] = "You are not an admin."
-  		redirect_to user_path
+  		redirect_to(user_path( :id => session[:user_id]))
   	end
   end
 
