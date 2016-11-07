@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       end
   	else
   		flash[:notice] = "Error with your signup"
-  		redirect_to(new_user_path)
+  		render :new
   	end
   end
 

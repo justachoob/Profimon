@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: profimon_development
+  database: Profimon_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -48,7 +48,7 @@ development:
 
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
-  #   log, notice, warning, errorc, fatal, and panic
+  #   log, notice, warning, error, fatal, and panic
   # Defaults to warning.
   #min_messages: notice
 
@@ -57,13 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  adapter: postgresql
-  database: profimon_test
-  encoding: SQL_ASCII
-  username: ubuntu
-  template: template0
-  pool: 5
-
+  database: Profimon_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
