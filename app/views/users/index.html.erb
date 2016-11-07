@@ -5,11 +5,37 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
-<% @users.each do |u| %>
-	<p> <%= u.name %> </p>
-	<p> <%= u.id %> </p> 
-	<p> <%= u.admin %> </p>
-    <!--<p> <%= link_to 'Destroy', u, method: :delete, data: { confirm: 'Are you sure you want to delete this user?' } %></p>-->
-    </br>
-<%end%>
+<h1>List of Users</h1>
+
+<table id="table_of_users" style="text-align: center; margin: 10px auto;">
+  <tr>
+    <th width="50px">ID</th>
+    <th width="200px">Username</th>
+    <th width="300px">Characters</th>
+    <th width="150px"></th>
+  </tr>
+
+
+  <% @users.each do |u| %>
+    <tr>
+      <td><%= u.id %></td>
+      <td><%= u.name %></td>
+      <td>
+        <% @characters = Profile.where(:user_id => u.id) %>
+        <% @characters.each do |c| %>
+          <%= link_to c.pname, profile_path(c) %> (GPA: <%= c.current_gpa %>)<br>
+        <% end %>
+      </td>
+      <td><%= link_to 'Go to User Page', u %></td>
+      <!--<td> link_to 'Edit', edit_user_path(u) </td>-->
+      <!-- if u.name != @user.name -->
+        <!--<td> link_to 'Delete', u, method: :delete, data: { confirm: 'Are you sure?' } </td>-->
+      <!-- end -->
+    </tr>
+  <% end %>
+
+</table>
+
+
+
 </div>

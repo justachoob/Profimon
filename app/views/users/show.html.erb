@@ -17,14 +17,13 @@
 					GPA: <%= p.current_gpa %>
 				</td>
 			<% end %>
-		</tr>	
+		</tr>
 	</tbody>
 </table>
 
 
 <p style="text-align: center;">
-	<%= link_to 'Admin Options', "/admin/#{@user.id}", class: "profile_form_button" %>
-	<%= link_to 'New Character', new_profile_path, class: "profile_form_button", style: "margin-left: 20px;" %>
+	<%= link_to 'New Character', new_profile_path, class: "profile_form_button" %>
 </p>
 
 </div>

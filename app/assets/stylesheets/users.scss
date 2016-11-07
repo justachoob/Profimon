@@ -74,3 +74,26 @@ p.sign_up {
   border: 0;
   text-decoration: none;
 }
+
+#table_of_users {
+  border-collapse: collapse;
+}
+
+#table_of_users td, #table_of_users th {
+  vertical-align: top;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#table_of_users tr {
+  border: solid;
+  border-width: 1px 0;
+}
+
+#table_of_users tr:first-child {
+  border-top: none;
+}
+
+#table_of_users tr:last-child {
+  border-bottom: none;
+}
