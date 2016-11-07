@@ -10,7 +10,7 @@ class User < ApplicationRecord
 	validates :name, :presence=>true, :length => {:within => 6..20}, :uniqueness => true
 
 	validates :email, :presence=>true, :format=>EMAIL_REGEX, :length => {:maximum => 100}, :uniqueness => true
-	validates :password, :confirmation=>true, :length => {:in => 6..20}, :format=>PASS_REGEX
+	validates :password, :confirmation=>true, :length => {:in => 6..20}, format: {with: PASS_REGEX, message: " must contain at least one letter and number"}
 	validates :password_confirmation, :presence =>true
 	validates_length_of :password, :in=> 6..20
 
