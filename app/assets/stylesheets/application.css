@@ -100,3 +100,7 @@ h4.subtitle {
   margin-top: 20px;
   margin-bottom: 10px;
 }
+
+#error_explanation {
+  color: red;
+}

@@ -3,19 +3,17 @@
 
 <% if user.errors.any? %>
 
+  <p style="color: red">The following errors occurred:</p>
+
   <div id="error_explanation">
-
-    <ul>
     <% user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <%= msg %><br>
     <% end %>
-    </ul>
   </div>
-
-
 <% end %>
+
   <div class="field">
-    <%= f.label :name, 'Username:' %><br>
+    <%= f.label :name, 'Username (min. 6 characters):' %><br>
     <%= f.text_field :name, class: 'input_field_center' %>
   </div>
 
@@ -25,7 +23,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password, 'Password:' %><br>
+    <%= f.label :password, 'Password (min. 6 characters):' %><br>
     <%= f.password_field :password, class: 'input_field_center' %>
   </div>
 
