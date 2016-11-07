@@ -43,7 +43,8 @@
   <br>
 
   <div class="actions">
-    <%= link_to 'Back', :controller => "users" , :action => "show", :id => session[:user_id], :class => "form_link" %> <%= f.submit "Create User", class: "form_button" %>
+    <%= link_to 'Back', root_path, :class => "form_link" %> 
+    <%= f.submit "Create User", class: "form_button" %>
   </div>
 
 
