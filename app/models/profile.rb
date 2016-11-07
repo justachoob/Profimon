@@ -7,4 +7,8 @@ class Profile < ApplicationRecord
       self.num_of_courses_taken ||= 0
 	
     end
+    
+  validates :pname, :presence=>true
+  validates :faculty, :presence=>true
+  
 end
