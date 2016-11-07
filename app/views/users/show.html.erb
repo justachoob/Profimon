@@ -2,44 +2,71 @@
 <% if flash[:notice] %>
 		<div class="notice"><%= flash[:notice] %></div>
 <% end %>
-<p> <%= @user.name %> </p>
-<p> <%= @user.email %> </p> <br>
 
-<% @user.profile.each do |profile| %>
-	<p>
-	  <strong>Profile name:</strong>
-	  <%= link_to profile.pname, profile %>
-	</p>
+<h1> Welcome, <%= @user.name %>! </h1>
 
-	<p>
-	  <strong>Faculty:</strong>
-	  <%= profile.faculty %>
-	</p>
+<table id="table_of_profiles">
+	<tbody>
+		<% @user.profile.each_slice(5) do |p1, p2, p3, p4, p5| %>
+			<tr>
+				<% if p1 != nil %>
+					<td>
+						<div class="profile_table_cell">
+							<%= link_to p1.pname, p1, :class => "profile_name_link" %><br>
+						</div>
+						<%= p1.faculty %><br>
+						GPA: <%= p1.current_gpa %>
+					</td>
+				<% end %>
 
-	<p>
-	  <strong>Current gpa:</strong>
-	  <%= profile.current_gpa %>
-	</p>
+				<% if p2 != nil %>
+					<td>
+						<div class="profile_table_cell">
+							<%= link_to p2.pname, p2, :class => "profile_name_link" %><br>
+						</div>
+						<%= p2.faculty %><br>
+						GPA: <%= p2.current_gpa %>
+					</td>
+				<% end %>
 
-	<p>
-	  <strong>Number of courses taken:</strong>
-	  <%= profile.num_of_courses_taken %>
-	</p>
+				<% if p3 != nil %>
+					<td>
+						<div class="profile_table_cell">
+							<%= link_to p3.pname, p3, :class => "profile_name_link" %><br>
+						</div>
+						<%= p3.faculty %><br>
+						GPA: <%= p3.current_gpa %>
+					</td>
+				<% end %>
 
-	<p>
-	  <strong>Courses taken:</strong>
-	  <%= profile.courses_taken %>
-	</p>
+				<% if p4 != nil %>
+					<td>
+						<div class="profile_table_cell">
+							<%= link_to p4.pname, p4, :class => "profile_name_link" %><br>
+						</div>
+						<%= p4.faculty %><br>
+						GPA: <%= p4.current_gpa %>
+					</td>
+				<% end %>
 
-	<p>
-	  <strong>Badges:</strong>
-	  <%= profile.badges %>
-	</p>
+				<% if p5 != nil %>
+					<td>
+						<div class="profile_table_cell">
+							<%= link_to p5.pname, p5, :class => "profile_name_link" %><br>
+						</div>
+						<%= p5.faculty %><br>
+						GPA: <%= p5.current_gpa %>
+					</td>
+				<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
 
-	<% end %>
 
-
-<%= link_to 'Admin' , "/admin/#{@user.id}" %>
-<%= link_to 'Create profile', new_profile_path%>
+<p style="text-align: center;">
+	<%= link_to 'Admin Options', "/admin/#{@user.id}", class: "profile_form_button" %>
+	<%= link_to 'New Character', new_profile_path, class: "profile_form_button", style: "margin-left: 20px;" %>
+</p>
 
 </div>

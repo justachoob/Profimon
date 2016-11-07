@@ -37,4 +37,40 @@ p.sign_up {
   margin-top: 20px;
 }
 
+#table_of_profiles {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 20px;
+}
 
+#table_of_profiles td {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  width: 16%;
+  margin: 20px 2%;
+  padding: 0;
+}
+
+.profile_table_cell {
+  padding: 40px;
+  background-color: #266;
+  margin-bottom: 10px;
+  padding: 30px 0 25px 0;
+}
+
+#table_of_profiles .profile_name_link{
+  color: white;
+  text-decoration: none;
+}
+
+.profile_form_button {
+  font-size: 1.3em;
+  background-color: #A23;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0;
+  text-decoration: none;
+}
