@@ -21,6 +21,12 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     #assert_response :success
     assert_redirected_to login_url
   end
+  
+  test "should get new" do
+    log_in_as(users(:one))
+    get new_profile_url
+    assert_response :success
+  end
 
 
   test "should redirect instead of show profile when not logged in" do
@@ -29,12 +35,24 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     #assert_response :success
     assert_redirected_to login_url
   end
+  
+  test "should show profile" do
+    log_in_as(users(:one))
+    get profile_url(@profile)
+    assert_response :success
+  end
 
   test "should redirect instead of get edit when not logged in" do
     get edit_profile_url(@profile)
     #Failure creates a 302 error, redirect to /login
     #assert_response :success
     assert_redirected_to login_url
+  end
+  
+  test "should get edit" do
+    log_in_as(users(:one))
+    get edit_profile_url(@profile)
+    assert_response :success
   end
 
   test "should redirect instead of update profile when not logged in" do
