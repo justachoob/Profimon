@@ -1,10 +1,22 @@
 require 'test_helper'
 
 class UserLoginTest < ActionDispatch::IntegrationTest
+  #user login and flow tests
   setup do
     @user = users(:one)
     @profile = profiles(:one)
   end
+    
+  test "should get new for creating user" do
+    get new_user_url
+    assert_response :success
+    assert_difference('User.count') do
+      post users_url, params: { user: { name: "abcdefg", email: "example@example.com", password: "password1", password_confirmation: "password1", id: 3, admin: false} } 
+    end
+    
+    assert_response :redirect
+  end
+  
   
   test "should get index" do
     log_in_as(users(:one))
