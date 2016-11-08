@@ -17,6 +17,25 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
   
+  test "should not allow fake email when creating user" do
+    get new_user_url
+    assert_response :success
+    assert_no_difference('User.count') do
+      post users_url, params: { user: { name: "abcdefg", email: "not an email", password: "password1", password_confirmation: "password1", id: 3, admin: false} } 
+    end
+    
+    assert_response :success
+  end
+  
+  test "should not allow user creation when passwords not matching when creating user" do
+    get new_user_url
+    assert_response :success
+    assert_no_difference('User.count') do
+      post users_url, params: { user: { name: "abcdefg", email: "example@example.com", password: "passw", password_confirmation: "password1", id: 3, admin: false} } 
+    end
+    
+    assert_response :success
+  end
   
   test "should get index" do
     log_in_as(users(:one))
