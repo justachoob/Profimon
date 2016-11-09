@@ -8,6 +8,7 @@
 <h1>List of Users</h1>
 
 <table id="table_of_users" style="text-align: center; margin: 10px auto;">
+  <!--id="table_of_users"-->
   <tr>
     <th width="50px">ID</th>
     <th width="200px">Username</th>
@@ -27,10 +28,10 @@
         <% end %>
       </td>
       <td><%= link_to 'Go to User Page', u %></td>
-      <!--<td> link_to 'Edit', edit_user_path(u) </td>-->
-      <!-- if u.name != @user.name -->
-        <!--<td> link_to 'Delete', u, method: :delete, data: { confirm: 'Are you sure?' } </td>-->
-      <!-- end -->
+      <td><%= link_to 'Edit', edit_user_path(u) %></td>
+      <!--% if u.name != @user.name %-->
+        <td> <%= link_to 'Delete', u, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <!--% end %-->
     </tr>
   <% end %>
 

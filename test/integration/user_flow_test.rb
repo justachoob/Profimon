@@ -3,7 +3,7 @@ require 'test_helper'
 class UserLoginTest < ActionDispatch::IntegrationTest
   #user login and flow tests
   setup do
-    @user = users(:one)
+    @user = users(:one) #admin
     @profile = profiles(:one)
   end
     
@@ -65,4 +65,5 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     get profile_url(@profile)
     assert_response :success
   end
+    
 end

@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20161105011846) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  
   create_table "profiles", force: :cascade do |t|
     t.string   "pname"
     t.string   "faculty"
@@ -27,7 +26,7 @@ ActiveRecord::Schema.define(version: 20161105011846) do
     t.datetime "updated_at",           null: false
     t.integer  "user_id"
   end
-  
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"

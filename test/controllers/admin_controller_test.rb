@@ -17,4 +17,6 @@ class AdminControllerTest < ActionDispatch::IntegrationTest
     get users_url
     assert_redirected_to login_url
   end
+    
+    
 end
