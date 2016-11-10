@@ -14,7 +14,9 @@
 						<%= link_to p.pname, p, :class => "profile_name_link" %><br>
 					</div>
 					<%= p.faculty %><br>
-					GPA: <%= p.current_gpa %>
+					GPA: <%= p.current_gpa %><br>
+					<!--<%= link_to 'Enroll', classes_select_path(:current_profile => {:id => p.id, :pname => p.pname}), class: "profile_form_button_small" %>-->
+					<%= link_to 'Enroll', {:controller => "classes", :action => "select", :profile => p.id }, class: "profile_form_button_small" %>
 				</td>
 			<% end %>
 		</tr>

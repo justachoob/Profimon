@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
 
+  get 'classes/select'
+  post '/enroll', to: 'classes#enroll'
+
   resources :profiles
-  root 'sessions#new' 
+  root 'sessions#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

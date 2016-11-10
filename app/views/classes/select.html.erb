@@ -1,0 +1,11 @@
+<div class="main">
+  <h1>Select a course for <%= @current_profile.pname %>!</h1>
+  <%= form_tag({ :action => 'enroll' }) do %>
+    <%= label_tag(:subject, "Subject:") %>
+    <%= collection_select :subject, :subject_id, @subjects, :to_s, :to_s, { prompt: true, class: "subject_select", onchange: "display_number()" } %>
+    <br><br>
+    <%= label_tag(:course_number, "Course number:") %>
+    <br><br>
+    <%= submit_tag "Enroll", class: "form_button" %>
+  <% end %>
+</div>
