@@ -10,7 +10,7 @@
 		<tr>
 			<% @user.profile.each do |p| %>
 				<td>
-					<%= image_tag p.avatar.url(:medium), :size => "185x185"%>
+					<%= link_to (image_tag p.avatar.url(:medium), :size => "185x185"), p%>
 					<div class="profile_table_cell">
 						<%= link_to p.pname, p, :class => "profile_name_link" %><br>
 					</div>
