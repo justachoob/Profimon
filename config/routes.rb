@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'classes/select'
   post '/enroll', to: 'classes#enroll'
+  get '/update_numbers', to: 'classes#update_numbers'
 
   resources :profiles
   root 'sessions#new'

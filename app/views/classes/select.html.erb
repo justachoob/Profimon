@@ -5,7 +5,10 @@
     <%= collection_select :subject, :subject_id, @subjects, :to_s, :to_s, { prompt: true, class: "subject_select", onchange: "display_number()" } %>
     <br><br>
     <%= label_tag(:course_number, "Course number:") %>
+    <%= collection_select :number, :number_id, @cnumbers, :to_s, :to_s, { prompt: true, class: "subject_select" } %>
     <br><br>
     <%= submit_tag "Enroll", class: "form_button" %>
   <% end %>
+
+  <p><%= @cnumbers %></p>
 </div>
