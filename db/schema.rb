@@ -40,12 +40,4 @@ ActiveRecord::Schema.define(version: 20161111173152) do
     t.boolean  "admin",           default: false
   end
 
-  create_table "widgets", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "stock"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
