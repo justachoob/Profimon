@@ -1,11 +1,62 @@
+<script>
+  function display_number() {
+    var sselect = document.getElementById("subject_subject_id");
+    var nselect = document.getElementById("course_number");
+
+    if (sselect.value == "")
+    {
+      nselect.innerHTML = "";
+      nselect.disabled = true;
+    }
+    else {
+      /* Code for displaying links */
+      var xmlhttp = new XMLHttpRequest();
+      var url = "http://www.sfu.ca/bin/wcm/course-outlines?2016/fall/" + sselect.value;
+
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState === XMLHttpRequest.DONE && xmlhttp.status === 200) {
+          var myArr = JSON.parse(xmlhttp.responseText);
+
+          myFunction(myArr);
+        }
+      }
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+
+      function myFunction(arr) {
+          var output = '';
+          var i;
+          for (i = 0; i < arr.length; i++) {
+            if (arr[i].value < 500)
+            {
+              output += '<option value="' + arr[i].value + '">' + arr[i].value +
+              " - " + arr[i].title + "</option>";
+            }
+          }
+
+          nselect.innerHTML = output;
+
+          if (output == "") {
+            nselect.innerHTML = '<option value="">No available courses</option>';
+            nselect.disabled = true;
+          }
+      }
+
+      nselect.disabled = false;
+    }
+  }
+</script>
+
 <div class="main">
   <h1>Select a course for <%= @current_profile.pname %>!</h1>
   <%= form_tag({ :action => 'enroll' }) do %>
     <%= label_tag(:subject, "Subject:") %>
-    <%= collection_select :subject, :subject_id, @subjects, :to_s, :to_s, { prompt: true, class: "subject_select", onchange: "display_number()" } %>
+    <%= collection_select :subject, :subject_id, @subjects, :to_s, :to_s, options = { prompt: true, class: "subject_select" }, html_options = { onchange: "display_number()" } %>
     <br><br>
     <%= label_tag(:course_number, "Course number:") %>
+    <select id="course_number" disabled="true">
+    </select>
     <br><br>
-    <%= submit_tag "Enroll", class: "form_button" %>
+    <%= submit_tag "Enroll", id: "enroll_button", class: "form_button" %>
   <% end %>
 </div>
