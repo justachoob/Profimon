@@ -1,0 +1,33 @@
+
+<%= form_for skill do |f| %>
+
+<% if skill.errors.any? %>
+
+  <p style="color: red">The following errors occurred:</p>
+
+  <div id="error_explanation">
+    <% skill.errors.full_messages.each do |msg| %>
+      <%= msg %><br>
+    <% end %>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :name, 'Skill Name' %><br>
+    <%= f.text_field :name, class: 'input_field_center' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subject, 'Subject' %><br>
+    <%= f.collection_select :subject, @subjects, :to_s, :to_s %>
+  </div>
+
+
+  <div class="actions">
+    <%= link_to 'Back', skills_path, :class => "form_link" %> 
+    <%= f.submit "Create Skill", class: "form_button" %>
+  </div>
+
+
+
+<% end %>

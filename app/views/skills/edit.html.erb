@@ -1,0 +1,11 @@
+<div class="main">
+
+<h1>Edit Skill</h1>
+
+<% if flash[:notice] %>
+		<div class="notice"><%= flash[:error] %></div>
+<% end %>
+
+<%= render 'skill_form', skill: @skill %>
+
+</div>

@@ -1,0 +1,30 @@
+<!-- Test to see if skills were added to database -->
+<div class="main">
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+<h1>List of Skills</h1>
+
+<table id="table_of_skills" style="text-align: center; margin: 10px auto;">
+  <tr>
+    <th width="200px">Skill</th>
+    <th width="300px">Subject</th>
+  </tr>
+
+
+  <% @skills.each do |s| %>
+    <tr>
+      <td><%= s.name %></td>
+      <td><%= s.subject %></td>
+      <td><%= link_to 'Edit', edit_skill_path(s) %> </td>
+      <td><%= link_to 'Delete', s, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+
+</table>
+
+ <%= link_to 'New Skill', new_skill_path, :class => "form_link" %> 
+ <%= link_to 'Back', admin_path, :class => "form_link" %> 
+</div>
