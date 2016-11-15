@@ -16,6 +16,7 @@ class SkillsController < ApplicationController
   		redirect_to skills_path
   	else
   		flash[:notice] = "Error with creation"
+      subject_collection
   		render :new
   	end
   end
