@@ -24,8 +24,11 @@
 
 
   <div class="actions">
-    <%= link_to 'Back', skills_path, :class => "form_link" %> 
-    <%= f.submit "Create Skill", class: "form_button" %>
+    <% if skill.new_record? %>
+      <%= link_to 'Back' , skills_path, class: 'form_link' %><%= f.submit "Create Skill" ,class:"form_button" %>
+    <% else %>
+      <%= link_to 'Back' , skills_path, class: 'form_link' %><%= f.submit "Save Changes",class:"form_button" %>
+    <% end %>
   </div>
 
 
