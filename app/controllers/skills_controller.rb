@@ -1,5 +1,7 @@
 class SkillsController < ApplicationController
-   before_action :set_skill, only: [:edit, :update, :destroy]
+  before_action :set_skill, only: [:edit, :update, :destroy]
+  before_action :confirm_logged_in
+  before_action :confirm_admin
 
   def new
   	@skill = Skill.new

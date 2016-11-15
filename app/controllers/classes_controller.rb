@@ -1,4 +1,7 @@
 class ClassesController < ApplicationController
+  
+  before_action :confirm_logged_in
+
   def select
     @current_profile = Profile.find(params[:profile])
 
