@@ -55,7 +55,7 @@ class SkillsController < ApplicationController
   end
 
   def skill_params
-    params.require(:skill).permit(:id, :name, :subject)
+    params.require(:skill).permit(:id, :name, :subject, :stamina, :gpa_required)
   end
 
   def subject_collection

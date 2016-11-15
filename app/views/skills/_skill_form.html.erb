@@ -22,6 +22,15 @@
     <%= f.collection_select :subject, @subjects, :to_s, :to_s %>
   </div>
 
+  <div class="field">
+    <%= f.label :stamina, 'Stamina' %><br>
+    <%= f.number_field :stamina, class: 'input_field_center' %>
+  </div>
+
+ <div class="field">
+    <%= f.label :gpa_required, 'GPA Required' %><br>
+    <%= f.number_field :gpa_required, class: 'input_field_center' %>
+  </div>
 
   <div class="actions">
     <% if skill.new_record? %>

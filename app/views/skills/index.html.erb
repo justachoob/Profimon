@@ -11,6 +11,8 @@
   <tr>
     <th width="200px">Skill</th>
     <th width="300px">Subject</th>
+    <th width="200px">Stamina</th>
+    <th width="300px">GPA Required</th>
   </tr>
 
 
@@ -18,6 +20,8 @@
     <tr>
       <td><%= s.name %></td>
       <td><%= s.subject %></td>
+      <td><%= s.stamina %></td>
+      <td><%= s.gpa_required %></td>
       <td><%= link_to 'Edit', edit_skill_path(s) %> </td>
       <td><%= link_to 'Delete', s, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
