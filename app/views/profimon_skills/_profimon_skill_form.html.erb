@@ -1,19 +1,19 @@
 
-<%= form_for skill do |f| %>
+<%= form_for profimon_skill do |f| %>
 
-<% if skill.errors.any? %>
+<% if profimon_skill.errors.any? %>
 
   <p style="color: red">The following errors occurred:</p>
 
   <div id="error_explanation">
-    <% skill.errors.full_messages.each do |msg| %>
+    <% profimon_skill.errors.full_messages.each do |msg| %>
       <%= msg %><br>
     <% end %>
   </div>
 <% end %>
 
   <div class="field">
-    <%= f.label :name, 'Skill Name' %><br>
+    <%= f.label :name, 'Profimon Skill Name' %><br>
     <%= f.text_field :name, class: 'input_field_center' %>
   </div>
 
@@ -27,11 +27,6 @@
     <%= f.number_field :stamina, class: 'input_field_center' %>
   </div>
 
- <div class="field">
-    <%= f.label :gpa_required, 'GPA Required' %><br>
-    <%= f.number_field :gpa_required, class: 'input_field_center' %>
-  </div>
-
   <div class="field">
     <%= f.label :knowledge, 'Knowledge' %><br>
     <%= f.number_field :knowledge, class: 'input_field_center' %>
@@ -43,10 +38,10 @@
   </div>
 
   <div class="actions">
-    <% if skill.new_record? %>
-      <%= link_to 'Back' , skills_path, class: 'form_link' %><%= f.submit "Create Skill" ,class:"form_button" %>
+    <% if profimon_skill.new_record? %>
+      <%= link_to 'Back' , profimon_skills_path, class: 'form_link' %><%= f.submit "Create Profimon Skill" ,class:"form_button" %>
     <% else %>
-      <%= link_to 'Back' , skills_path, class: 'form_link' %><%= f.submit "Save Changes",class:"form_button" %>
+      <%= link_to 'Back' , profimon_skills_path, class: 'form_link' %><%= f.submit "Save Changes",class:"form_button" %>
     <% end %>
   </div>
 

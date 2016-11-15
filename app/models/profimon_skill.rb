@@ -1,0 +1,2 @@
+class ProfimonSkill < ApplicationRecord
+end

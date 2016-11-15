@@ -1,0 +1,2 @@
+module ProfimonSkillsHelper
+end

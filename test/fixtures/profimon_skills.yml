@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  stamina: 1
+  subject: MyString
+  knowledge: 1
+  homework: 1
+
+two:
+  name: MyString
+  stamina: 1
+  subject: MyString
+  knowledge: 1
+  homework: 1
