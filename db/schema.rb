@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20161115201925) do
     t.string   "badges"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.string   "UserId"
     t.integer  "user_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
