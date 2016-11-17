@@ -5,6 +5,8 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
+<%= render 'adminnav' %>
+
 <h1>List of Users</h1>
 
 <table id="table_of_users" style="text-align: center; margin: 10px auto;">
@@ -14,7 +16,6 @@
     <th width="300px">Characters</th>
     <th width="150px"></th>
   </tr>
-
 
   <% @users.each do |u| %>
     <tr>
@@ -35,7 +36,9 @@
   <% end %>
 
 </table>
- <%= link_to 'Back', admin_path, :class => "form_link" %> 
 
+<div class="admin_footer_links">
+ <%= link_to 'Back', admin_path, :class => "form_link" %>
+</div>
 
 </div>

@@ -89,25 +89,25 @@ p.sign_up {
   text-decoration: none;
 }
 
-#table_of_users {
+#table_of_users, #table_of_skills {
   border-collapse: collapse;
 }
 
-#table_of_users td, #table_of_users th {
+#table_of_users td, #table_of_users th, #table_of_skills td, #table_of_skills th {
   vertical-align: top;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-#table_of_users tr {
+#table_of_users tr, #table_of_skills tr {
   border: solid;
   border-width: 1px 0;
 }
 
-#table_of_users tr:first-child {
+#table_of_users tr:first-child, #table_of_skills tr:first-child {
   border-top: none;
 }
 
-#table_of_users tr:last-child {
+#table_of_users tr:last-child, #table_of_skills tr:last-child {
   border-bottom: none;
 }

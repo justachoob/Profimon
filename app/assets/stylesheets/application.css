@@ -104,3 +104,14 @@ h4.subtitle {
 #error_explanation {
   color: red;
 }
+
+.admin_nav_links {
+  font-size: 1.2em;
+  color: #A23;
+}
+
+.admin_footer_links {
+   text-align: center;
+   margin-top: 40px;
+   margin-bottom: 20px;
+}

@@ -5,6 +5,8 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
+<%= render 'adminnav' %>
+
 <h1>List of Profimon Skills</h1>
 
 <table id="table_of_skills" style="text-align: center; margin: 10px auto;">
@@ -24,13 +26,15 @@
       <td><%= s.stamina %></td>
       <td><%= s.knowledge %></td>
       <td><%= s.homework %></td>
-      <td><%= link_to 'Edit', edit_profimon_skill_path(s) %> </td>
+      <td><%= link_to 'Edit', edit_profimon_skill_path(s), style: "margin-right: 20px;" %> </td>
       <td><%= link_to 'Delete', s, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 
 </table>
 
- <%= link_to 'New Skill', new_profimon_skill_path, :class => "form_link" %> 
- <%= link_to 'Back', admin_path, :class => "form_link" %> 
+<div class="admin_footer_links">
+ <%= link_to 'New Skill', new_profimon_skill_path, :class => "form_link" %>
+ <%= link_to 'Back', admin_path, :class => "form_link" %>
+ </div>
 </div>
