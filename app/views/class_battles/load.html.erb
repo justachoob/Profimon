@@ -1,7 +1,58 @@
+<!-- You can just add the Javascript here -->
+
 <div class="main">
   <h1><%= @subject %> <%= @course_number %> in session!</h1>
   <div class="class_info">
     <p>Instructor: <%= @instructor_name %></p>
     <p>Location: <%= @room_number %></p>
   </div>
+
+  <table id="class_battle" align="center">
+    <tr>
+      <td style="text-align: center;">
+        <%= image_tag @current_profile.avatar.url(:medium), :size => "200x200" %>
+        <!-- This is the player's stamina bar -->
+        <!-- Change the value of the meter using Javascript-->
+        <meter value="100" min="0" max="100" id="player_stamina"></meter>
+
+        <p><%= @current_profile.pname %></p>
+        <p>GPA: <%= @current_profile.current_gpa %></p>
+      </td>
+      <td>
+        <div style="float: left;">
+          <div style="height: 50px; width: 200px">
+              <!-- Put the name of the player's skill here -->
+              <p id="player_speech">bb</p>
+          </div>
+          <!--
+          <!--Add an onclick method to each of these buttons-->
+          <!--All buttons should go to the same onclick method-->
+          <!--Each button passes different values as parameters depending on the skill's stats-->
+          <div style="margin-left: 20px;">
+            <button type="button" id="button1" class="skill_button">Study</button>
+            <button type="button" id="button2" class="skill_button">Do HW Problems</button>
+            <button type="button" id="button3" class="skill_button">Cheat</button>
+            <button type="button" id="button4" class="skill_button">Skill4</button>
+            <button type="button" id="button5" class="skill_button">Skill5</button>
+            <button type="button" id="button6" class="skill_button">Skill6</button>
+            <button type="button" id="button7" class="skill_button">Skill7</button>
+          </div>
+        </div>
+        <div style="float: right; height: 50px; width: 200px">
+          <!-- Put the name of the profimon's skill here -->
+           <p id="profimon_speech">aa</p>
+        </div>
+      </td>
+      <td style="text-align: center;">
+        <!-- We will need to have an image for a profimon and put it here -->
+        <!-- Right now, this just uses the character's avatar -->
+        <%= image_tag @current_profile.avatar.url(:medium), :size => "200x200" %>
+
+        <!-- This is the profimon's stamina bar-->
+        <meter value="100" min="0" max="100" id="profimon_stamina"></meter>
+
+        <p><%= @instructor_name %></p>
+      </td>
+    </tr>
+  </table>
 </div>

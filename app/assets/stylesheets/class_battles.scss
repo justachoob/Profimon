@@ -5,3 +5,30 @@
 .class_info {
   text-align: center;
 }
+
+#class_battle {
+  margin-top: 30px;
+}
+
+#class_battle td {
+  text-align: center;
+  vertical-align: top;
+}
+
+#class_battle meter {
+  display: block;
+  margin: 20px auto;
+}
+
+#class_battle .skill_button {
+  display: block;
+  font-family: 'Arvo';
+  font-size: 1em;
+  background-color: #A23;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0;
+  width: 150px;
+  margin-bottom: 10px;
+}
