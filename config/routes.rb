@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'class_battles/load'
+
   get 'skills/new'
 
   get 'skills/create'

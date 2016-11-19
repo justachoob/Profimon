@@ -54,9 +54,10 @@
     <%= collection_select :subject, :subject_id, @subjects, :to_s, :to_s, options = { prompt: true, class: "subject_select" }, html_options = { onchange: "display_number()" } %>
     <br><br>
     <%= label_tag(:course_number, "Course number:") %>
-    <select id="course_number" disabled="true">
+    <select id="course_number" name="course_number" disabled="true">
     </select>
     <br><br>
+    <%= hidden_field(:profile, :id, value: @current_profile.id) %>
     <%= submit_tag "Enroll", id: "enroll_button", class: "form_button" %>
   <% end %>
 </div>
