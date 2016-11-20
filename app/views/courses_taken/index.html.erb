@@ -1,0 +1,24 @@
+<div class="main">
+
+  <p> All courses taken are: </p>
+  <% @courses_takens.each do |c| %>
+    <p>
+      <strong>Course subject:</strong>
+      <%= c.course_subject %>
+    </p>
+    <p>
+      <strong>Course number:</strong>
+      <%= c.course_number %>
+    </p>
+    <p>
+      <strong>Grade earned:</strong>
+      <%= c.grade_earned %>
+    </p>
+    <p>
+      <strong>Profimon name:</strong>
+      <%= c.profimon_name %>
+    </p>
+  <%end%>
+
+
+</div>
