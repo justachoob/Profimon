@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'courses_taken/show'
+
   get 'class_battles/load'
 
   get 'skills/new'
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get 	'/admin', to: 'admin#show'
-
+  resources :courses_taken
   resources :users
   resources :profiles
   resources :skills

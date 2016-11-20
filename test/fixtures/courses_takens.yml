@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profile_id: MyString
+  grade_earned: 1.5
+  course_subject: MyString
+  course_number: 1
+  profimon_name: MyString
+
+two:
+  profile_id: MyString
+  grade_earned: 1.5
+  course_subject: MyString
+  course_number: 1
+  profimon_name: MyString
