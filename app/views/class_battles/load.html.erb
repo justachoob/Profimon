@@ -5,14 +5,37 @@
   var week = 1;
   var midtermWeek = 5;
   
-  function study(){
-    stamina--;
-    knowledge +=2;
+  function nextWeek(){
+    week++;
+    display_info();
+    //profMove();
   }
   
-  function study(){
-    stamina--;
-    knowledge +=2;
+  function playerMove(move, knowl, stam, grde){
+    
+    var out = document.getElementById("log");
+    //check if there's enough stamina
+    if (stam<0){
+      if (stamina+stam<0){
+        var stamNotif = "Not enough stamina for ";
+        stamNotif = stamNotif.concat(move);
+        stamNotif = stamNotif.concat("!");
+        out.innerHTML = stamNotif;
+        return;
+      }
+    }
+    
+    
+    var notif = "<%= @current_profile.pname %>";
+    notif = notif.concat(" used ");
+    notif = notif.concat(move);
+    notif = notif.concat("!");
+    out.innerHTML = notif;
+    
+    stamina +=stam;
+    knowledge +=knowl;
+    grade += grde;
+    nextWeek();
   }
   
   function display_info() {
@@ -67,11 +90,11 @@
           <!--All buttons should go to the same onclick method-->
           <!--Each button passes different values as parameters depending on the skill's stats-->
           <div style="margin-left: 20px;">
-            <button type="button" id="button1" class="skill_button">Study</button>
-            <button type="button" id="button2" class="skill_button">Homework</button>
-            <button type="button" id="button3" class="skill_button">All Nighter</button>
-            <button type="button" id="button4" class="skill_button">Relax</button>
-            <button type="button" id="button5" class="skill_button">Sleep In</button>
+            <button type="button" id="button1" class="skill_button" onclick = "playerMove('Study', 2, -1, 0)">Study</button>
+            <button type="button" id="button2" class="skill_button" onclick = "playerMove('Homework', 1, -2, 1)">Homework</button>
+            <button type="button" id="button3" class="skill_button" onclick = "playerMove('All Nighter', 4, -5, 0)">All Nighter</button>
+            <button type="button" id="button4" class="skill_button" onclick = "playerMove('Relax', 0, 3, 0)">Relax</button>
+            <button type="button" id="button5" class="skill_button" onclick = "playerMove('Sleep In', -1, 5, -1)">Sleep In</button>
             <button type="button" id="button6" class="skill_button">Skill6</button>
             <button type="button" id="button7" class="skill_button">Skill7</button>
           </div>
@@ -93,12 +116,14 @@
       </td>
     </tr>
   </table>
-  <p id = "info" onclick = "display_info()">STATS:<br/>
+  <p id = "log"></p>
+  <p id = "log2"></p>
+  <p id = "info">STATS:<br/>
     Knowledge: <bdi id="knowledge"></bdi><br/>
     Stamina: <bdi id="stamina"></bdi><br/>
     Grade: <bdi id="grade"></bdi><br/>
     Current week: <bdi id="curWeek"></bdi><br/>
     Midterm week: <bdi id="midterm"></bdi><br/>
-    </p>
+  </p>
 </div>
 </body>
