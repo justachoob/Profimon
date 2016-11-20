@@ -3,7 +3,7 @@ class CoursesTakenController < ApplicationController
   end
 
   def index
-      @courses_taken= Courses_taken.all
+      @courses_takens= CoursesTaken.all
   end
 
   private
