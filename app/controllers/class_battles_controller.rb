@@ -15,6 +15,9 @@ class ClassBattlesController < ApplicationController
     class_info = JSON.parse(open(@course_info_url).read)
 
     @instructor_name = class_info['instructor'][0]['name']
-    @room_number = class_info['courseSchedule'][0]['buildingCode'] + " " + class_info['courseSchedule'][0]['roomNumber']
+    @room_number = "Online"
+    if class_info['courseSchedule'][0]['buildingCode'] != nil
+      @room_number = class_info['courseSchedule'][0]['buildingCode'] + " " + class_info['courseSchedule'][0]['roomNumber']
+    end
   end
 end
