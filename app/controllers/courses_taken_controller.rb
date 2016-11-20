@@ -3,7 +3,12 @@ class CoursesTakenController < ApplicationController
   end
 
   def index
-      @courses_takens= CoursesTaken.all
+      if params[:pname]
+        @profile = @Profile.find(params[:pname])
+        @courses_takens= @profile.courses_takens.all
+      else
+        @courses_takens= CoursesTaken.all
+      end
   end
 
   private
