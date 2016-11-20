@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20161119231028) do
     t.string   "badges"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "UserId"
     t.integer  "user_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -69,14 +70,6 @@ ActiveRecord::Schema.define(version: 20161119231028) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.boolean  "admin",           default: false
-  end
-
-  create_table "widgets", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "stock"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end

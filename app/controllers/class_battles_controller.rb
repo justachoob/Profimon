@@ -1,4 +1,6 @@
 class ClassBattlesController < ApplicationController
+  before_action :confirm_logged_in
+  
   def load
     @current_profile = Profile.find(params[:current_profile_id])
     @subject = params['subject']
