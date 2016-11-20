@@ -23,4 +23,13 @@ class ClassesController < ApplicationController
     redirect_to(controller: 'class_battles', action: 'load', current_profile_id: @current_profile_id, subject: @subject, course_number: @course_number)
   end
 
+  def new
+    @courses_taken = CourseTaken.new
+    
+  end
+
+
+
+
+
 end
