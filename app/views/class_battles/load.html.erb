@@ -1,5 +1,43 @@
-<!-- You can just add the Javascript here -->
-
+<script>
+  var knowledge = 0;
+  var stamina = 10;
+  var grade = 4;
+  var week = 1;
+  var midtermWeek = 5;
+  
+  function study(){
+    stamina--;
+    knowledge +=2;
+  }
+  
+  function study(){
+    stamina--;
+    knowledge +=2;
+  }
+  
+  function display_info() {
+    var out = document.getElementById("knowledge");
+    out.innerHTML = knowledge;
+    out = document.getElementById("stamina");
+    out.innerHTML = stamina;
+    out = document.getElementById("grade");
+    out.innerHTML = grade;
+    out = document.getElementById("curWeek");
+    out.innerHTML = week;
+    out = document.getElementById("midterm");
+    out.innerHTML = midtermWeek;
+  }
+  
+  function battleStart(){
+    var out = document.getElementById("knowledge");
+    out.innerHTML = knowledge;
+    display_info();
+  }
+  
+  
+  
+</script>
+<body onload="battleStart()">
 <div class="main">
   <h1><%= @subject %> <%= @course_number %> in session!</h1>
   <div class="class_info">
@@ -30,10 +68,10 @@
           <!--Each button passes different values as parameters depending on the skill's stats-->
           <div style="margin-left: 20px;">
             <button type="button" id="button1" class="skill_button">Study</button>
-            <button type="button" id="button2" class="skill_button">Do HW Problems</button>
-            <button type="button" id="button3" class="skill_button">Cheat</button>
-            <button type="button" id="button4" class="skill_button">Skill4</button>
-            <button type="button" id="button5" class="skill_button">Skill5</button>
+            <button type="button" id="button2" class="skill_button">Homework</button>
+            <button type="button" id="button3" class="skill_button">All Nighter</button>
+            <button type="button" id="button4" class="skill_button">Relax</button>
+            <button type="button" id="button5" class="skill_button">Sleep In</button>
             <button type="button" id="button6" class="skill_button">Skill6</button>
             <button type="button" id="button7" class="skill_button">Skill7</button>
           </div>
@@ -55,4 +93,12 @@
       </td>
     </tr>
   </table>
+  <p id = "info" onclick = "display_info()">STATS:<br/>
+    Knowledge: <bdi id="knowledge"></bdi><br/>
+    Stamina: <bdi id="stamina"></bdi><br/>
+    Grade: <bdi id="grade"></bdi><br/>
+    Current week: <bdi id="curWeek"></bdi><br/>
+    Midterm week: <bdi id="midterm"></bdi><br/>
+    </p>
 </div>
+</body>
