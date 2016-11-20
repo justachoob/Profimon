@@ -25,7 +25,8 @@ class ClassesController < ApplicationController
 
   def new
     @courses_taken = CourseTaken.new
-  end 
+    
+  end
 
 
 
