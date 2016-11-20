@@ -9,7 +9,7 @@ class ClassesController < ApplicationController
     require 'json'
 
     @subjects = []
-    subjects_raw = JSON.parse(open("http://www.sfu.ca/bin/wcm/course-outlines?2016/fall").read)
+    subjects_raw = JSON.parse(open("https://www.sfu.ca/bin/wcm/course-outlines?2016/fall").read)
 
     subjects_raw.each do |s|
       @subjects << s["text"]

@@ -7,7 +7,7 @@ class ClassBattlesController < ApplicationController
     require 'open-uri'
     require 'json'
 
-    @course_url = "http://www.sfu.ca/bin/wcm/course-outlines?2016/fall/" + @subject.to_s + "/" + @course_number.to_s
+    @course_url = "https://www.sfu.ca/bin/wcm/course-outlines?2016/fall/" + @subject.to_s + "/" + @course_number.to_s
     class_sections = JSON.parse(open(@course_url).read)
 
     # Enroll in the first section of the class
