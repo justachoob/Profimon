@@ -5,6 +5,7 @@ class ProfimonSkillsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @profile = profiles(:one)
     @skill = skills(:one)
+    @pskill = profimon_skills(:one)
   end
   
   test "should get index" do
@@ -19,4 +20,15 @@ class ProfimonSkillsControllerTest < ActionDispatch::IntegrationTest
     
     assert_response :success
   end
+  
+  test "should get list of profimon skills" do
+    log_in_as(users(:one))
+    #get "/admin"
+    get "/profimon_skills"
+    assert_response :success
+    
+    assert_select "h1", "List of Profimon Skills"
+    
+  end
+  
 end

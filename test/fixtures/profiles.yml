@@ -7,7 +7,7 @@ one:
   faculty: MyString
   current_gpa: 4.0
   num_of_courses_taken: 1
-  courses_taken: MyString
+  courses_taken: CMPT
   badges: MyString
 
 two:

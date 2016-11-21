@@ -3,7 +3,7 @@
 <h1>Edit Skill</h1>
 
 <% if flash[:notice] %>
-		<div class="notice"><%= flash[:error] %></div>
+		<div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
 <%= render 'skill_form', skill: @skill %>
