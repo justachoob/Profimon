@@ -8,7 +8,7 @@ class SkillsControllerTest < ActionDispatch::IntegrationTest
   end
   test "should get new" do
     log_in_as(users(:one))
-    get skills_new_url
+    get new_skill_url
     assert_response :success
   end
 
