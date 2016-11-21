@@ -6,7 +6,7 @@ class ProfimonSkillsController < ApplicationController
   def new
   	@profimon_skill = ProfimonSkill.new
     subject_collection
-  	 
+
   end
 
   def create
@@ -32,7 +32,7 @@ class ProfimonSkillsController < ApplicationController
         format.html { redirect_to profimon_skills_path, notice: 'Profimon Skill was successfully updated.' }
         format.json { render :index, status: :ok, location: @profimon_skill}
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_profimon_skill_path, notice: "Please enter valid values." }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end

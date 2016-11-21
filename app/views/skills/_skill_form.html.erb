@@ -23,26 +23,30 @@
   </div>
 
   <div class="field">
-    <%= f.label :stamina, 'Stamina' %><br>
+    <%= f.label :stamina, 'Stamina Required:' %><br>
     <%= f.number_field :stamina, class: 'input_field_center' %>
+    <p class="help_info_for_field">(must be an integer between -100 and 100)</p>
   </div>
 
  <div class="field">
-    <%= f.label :gpa_required, 'GPA Required' %><br>
+    <%= f.label :gpa_required, 'GPA Required:' %><br>
     <%= f.number_field :gpa_required, class: 'input_field_center' %>
+    <p class="help_info_for_field">(must be between 0 and 3.5)</p>
   </div>
 
   <div class="field">
-    <%= f.label :knowledge, 'Knowledge' %><br>
+    <%= f.label :knowledge, 'Knowledge Component:' %><br>
     <%= f.number_field :knowledge, class: 'input_field_center' %>
+    <p class="help_info_for_field">(must be an integer between 0 and 100)</p>
   </div>
 
   <div class="field">
-    <%= f.label :homework, 'Homework' %><br>
+    <%= f.label :homework, 'Homework Component:' %><br>
     <%= f.number_field :homework, class: 'input_field_center' %>
+    <p class="help_info_for_field">(must be an integer between 0 and 100)</p>
   </div>
 
-  <div class="actions">
+  <div class="actions" style="margin-top: 30px;">
     <% if skill.new_record? %>
       <%= link_to 'Back' , skills_path, class: 'form_link' %><%= f.submit "Create Skill" ,class:"form_button" %>
     <% else %>

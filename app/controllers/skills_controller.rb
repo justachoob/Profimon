@@ -6,7 +6,7 @@ class SkillsController < ApplicationController
   def new
   	@skill = Skill.new
     subject_collection
-  	 
+
   end
 
   def create
@@ -32,7 +32,7 @@ class SkillsController < ApplicationController
         format.html { redirect_to skills_path, notice: 'Skill was successfully updated.' }
         format.json { render :index, status: :ok, location: @skill}
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_skill_path, notice: "Please enter valid values." }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
