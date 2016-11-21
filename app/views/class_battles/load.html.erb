@@ -1,14 +1,14 @@
 <script>
   var knowledge = 0;
   var stamina = 10;
-  var grade = 4; //is this what we realy want for the starting grade?
+  var grade = 75; // Starting grade is 75%
   var week = 1;
   var midtermWeek = 5; //decide this randomly, on week 4, 5, or 6
   var midtermDifficulty = 3; //calculate difficulties based on year instead of hard coding them like this
   var finalDifficulty = 6;
   var numberOfProfMoves = 2; //random ones, not including midterm and final
                              //in tis case just tutorial and lecture
-  
+
   //moves the game forward, and ends when it's week 10
   function nextWeek(){
     week++;
@@ -18,7 +18,7 @@
     else profTurn();
     display_info();
   }
-  
+
   //ends the course
   //I disabled the buttons since that was the most obvious way to stop the game
   //Later on we need to add a button that sends the user to their profile page
@@ -30,48 +30,48 @@
     document.getElementById("button3").disabled = true;
     document.getElementById("button4").disabled = true;
     document.getElementById("button5").disabled = true;
-    
+    document.getElementById("button6").disabled = true;
+
     var newHeader = "<%= @subject %> <%= @course_number %>";
-    newHeader = newHeader.concat(" is comlete!");
+    newHeader = newHeader.concat(" is complete!");
     document.getElementById("classStatus").innerHTML = newHeader;
-    
-    
+
     //this needs to be rebalanced, it's way to easy to get an A+
     var result = "Grade points for this course: ";
-    var finalGrade = grade/2;
+    var finalGrade = grade / 25;
     if (finalGrade>4) finalGrade = 4;
     result = result.concat(finalGrade);
     document.getElementById("log3").innerHTML = result;
   }
-  
+
   //does the calculations
   //figure something out for stamina, it can never be 10 this way since the prof
     //acts second and brins it down to 9 whenever the player tries to fill it.
     //Is this somethign we want to "fix"?
-  function modifyStats(knowl, stam, grde){
-    stamina +=stam;
-    knowledge +=knowl;
-    grade += grde;
-    
-    if (knowledge<0) knowledge = 0;
-    if (stamina<0) stamina = 0;
-    else if (stamina>10) stamina = 10;
-    if (grade<0) grade = 0;
+  function modifyStats(current_knowledge, current_stamina, current_grade){
+    stamina += current_stamina;
+    knowledge += current_knowledge;
+    grade += current_grade;
+
+    if (knowledge < 0) knowledge = 0;
+    if (stamina < 0) stamina = 0;
+    else if (stamina > 200) stamina = 200;
+    if (grade < 0) grade = 0;
   }
-  
+
   //this is coded very similar to the midterm, so these functions need to be combined
   //once we have the database stuff worked out
   function final(){
     var out = document.getElementById("log2");
     var notif = "Time for the final exam!";
     var grde = knowledge - finalDifficulty;
-    
+
     if (stamina<3){
       notif = notif.concat("<br/> You did not have enough stamina, and failed!");
       grade -=finalDifficulty;
       stamina = 0;
       notif = addInfo(notif, 0, 2, -finalDifficulty);
-      
+
     }
     else{
       notif = addInfo(notif, 0, 2, grde);
@@ -80,7 +80,7 @@
     }
     out.innerHTML = notif;
   }
-  
+
    //prof decides what to do
     //(can only use Tutorial and Lecture as random skills at the moment)
   function profTurn(){
@@ -102,40 +102,40 @@
       var out = document.getElementById("log2");
     }
   }
-  
+
   //prof does their random move
-  function profMove(move, knowl, stam, grde){
+  function profMove(move, knowledge, homework, stamina){
     var out = document.getElementById("log2");
     var notif = "<%= @instructor_name %>";
     notif = notif.concat(" used ");
     notif = notif.concat(move);
     notif = notif.concat("!");
-    
-    if (stam<0){
-      if (stamina+stam<0){
-        notif = notif.concat("<br/> you recieved no benefit because your stamina was too low!");
+
+    if (stamina < 0){
+      if (stamina + current_stamina < 0){
+        notif = notif.concat("<br/>You received no benefit because your stamina was too low!");
         return;
       }
     }
-    
-    notif = addInfo(notif, knowl, stam, grde)
+
+    notif = addInfo(notif, current_knowledge, current_homework, current_stamina)
     out.innerHTML = notif;
-    
-    modifyStats(knowl, stam, grde)
-    
+
+    modifyStats(current_knowledge, current_homework, current_stamina)
+
   }
-  
+
   function midterm(){
     var out = document.getElementById("log2");
     var notif = "Time for the midterm!";
     var grde = knowledge - midtermDifficulty;
-    
+
     if (stamina<2){
       notif = notif.concat("<br/> You did not have enough stamina, and failed!");
       grade -=midtermDifficulty;
       stamina = 0;
       notif = addInfo(notif, 0, 2, -midtermDifficulty);
-      
+
     }
     else{
       notif = addInfo(notif, 0, 2, grde);
@@ -143,27 +143,27 @@
       grade += grde;
     }
     out.innerHTML = notif;
-    
+
   }
-  
+
   //puts all the modifiers there for the sake of testing
   //maybe we should take this out later
-  function addInfo(string, knowl, stam, grde){
+  function addInfo(string, current_knowledge, current_homework, current_stamina){
     string = string.concat("<br/> k ");
-    string = string.concat(knowl);
+    string = string.concat(current_knowledge);
     string = string.concat("<br/> s ");
-    string = string.concat(stam);
+    string = string.concat(current_homework);
     string = string.concat("<br/> g ");
-    string = string.concat(grde);
+    string = string.concat(current_stamina);
     return string;
   }
-  
-  function playerMove(move, knowl, stam, grde){
-    
+
+  function playerMove(move, current_knowledge, current_homework, current_stamina){
+
     var out = document.getElementById("log");
     //check if there's enough stamina
-    if (stam<0){
-      if (stamina+stam<0){
+    if (current_stamina < 0){
+      if (stamina + current_stamina <0){
         var stamNotif = "Not enough stamina for ";
         stamNotif = stamNotif.concat(move);
         stamNotif = stamNotif.concat("!");
@@ -171,18 +171,18 @@
         return;
       }
     }
-    
+
     var notif = "<%= @current_profile.pname %>";
     notif = notif.concat(" used ");
     notif = notif.concat(move);
     notif = notif.concat("!");
-    notif = addInfo(notif, knowl, stam, grde)
+    notif = addInfo(notif, current_knowledge, current_homework, current_stamina)
     out.innerHTML = notif;
-    
-     modifyStats(knowl, stam, grde);
+
+    modifyStats(current_knowledge, current_homework, current_stamina);
     nextWeek();
   }
-  
+
   //shows the stats at the bottom of the page
   function display_info() {
     var out = document.getElementById("knowledge");
@@ -195,21 +195,24 @@
     out.innerHTML = week;
     out = document.getElementById("midterm");
     out.innerHTML = midtermWeek;
-    
+
     var bar = document.getElementById("player_stamina");
     bar.setAttribute("value", String(stamina*10));
   }
-  
+
   function battleStart(){
     var out = document.getElementById("knowledge");
     out.innerHTML = knowledge;
     profTurn();
     display_info();
   }
-  
-  
-  
 </script>
+<!--End of Javascript-->
+
+
+
+
+
 <body onload="battleStart()">
 <div class="main">
   <h1 id = "classStatus"><%= @subject %> <%= @course_number %> in session!</h1>
@@ -224,7 +227,7 @@
         <%= image_tag @current_profile.avatar.url(:medium), :size => "200x200" %>
         <!-- This is the player's stamina bar -->
         <!-- Change the value of the meter using Javascript-->
-        <meter value="100" min="0" max="100" id="player_stamina"></meter>
+        <meter value="200" min="0" max="100" id="player_stamina"></meter>
 
         <p><%= @current_profile.pname %></p>
         <p>GPA: <%= @current_profile.current_gpa %></p>
@@ -240,11 +243,12 @@
           <!--All buttons should go to the same onclick method-->
           <!--Each button passes different values as parameters depending on the skill's stats-->
           <div style="margin-left: 20px;">
-            <button type="button" id="button1" class="skill_button" onclick = "playerMove('Study', 2, -1, 0)">Study</button>
-            <button type="button" id="button2" class="skill_button" onclick = "playerMove('Homework', 1, -2, 1)">Homework</button>
-            <button type="button" id="button3" class="skill_button" onclick = "playerMove('All Nighter', 4, -5, 0)">All Nighter</button>
-            <button type="button" id="button4" class="skill_button" onclick = "playerMove('Relax', 0, 3, 0)">Relax</button>
-            <button type="button" id="button5" class="skill_button" onclick = "playerMove('Sleep In', -1, 5, -1)">Sleep In</button>
+            <button type="button" id="skill_button1" class="skill_button" onclick = "playerMove('Study', 100, 25, 30)">Study</button>
+            <button type="button" id="skill_button2" class="skill_button" onclick = "playerMove('Do Homework', 60, 100, 45)">Homework</button>
+            <button type="button" id="skill_button3" class="skill_button" onclick = "playerMove('Sleep In', 0, 0, -75)">All Nighter</button>
+            <button type="button" id="skill_button4" class="skill_button" onclick = "playerMove('<%= @user_skill1.name %>', <%= @user_skill1.knowledge %>, <%= @user_skill1.homework %>, <%= @user_skill1.stamina %>)"><%= @user_skill1.name %></button>
+            <button type="button" id="skill_button5" class="skill_button" onclick = "playerMove('<%= @user_skill2.name %>', <%= @user_skill2.knowledge %>, <%= @user_skill2.homework %>, <%= @user_skill2.stamina %>)"><%= @user_skill2.name %></button>
+            <button type="button" id="skill_button6" class="skill_button" onclick = "playerMove('<%= @user_skill3.name %>', <%= @user_skill3.knowledge %>, <%= @user_skill3.homework %>, <%= @user_skill3.stamina %>)"><%= @user_skill3.name %></button>
           </div>
         </div>
         <div style="float: right; height: 50px; width: 200px">
@@ -258,7 +262,7 @@
         <%= image_tag @current_profile.avatar.url(:medium), :size => "200x200" %>
 
         <!-- This is the profimon's stamina bar-->
-        <meter value="100" min="0" max="100" id="profimon_stamina"></meter>
+        <meter value="200" min="0" max="100" id="profimon_stamina"></meter>
 
         <p><%= @instructor_name %></p>
       </td>

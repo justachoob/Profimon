@@ -19,5 +19,24 @@ class ClassBattlesController < ApplicationController
     if class_info['courseSchedule'][0]['buildingCode'] != nil
       @room_number = class_info['courseSchedule'][0]['buildingCode'] + " " + class_info['courseSchedule'][0]['roomNumber']
     end
+
+    @profimon_skills = ProfimonSkill.where(subject: [@subject, "All"])
+    @user_skills = Skill.where(subject: [@subject, "All"])
+    @user_skills = @user_skills.where("gpa_required <= ?", @current_profile.current_gpa)
+
+    # Pick 3 random skills for the user
+    randseed = Random.new
+    rand_index = randseed.rand(@user_skills.count)
+    @user_skill1 = @user_skills[rand_index]
+
+    begin
+      rand_index = randseed.rand(@user_skills.count)
+      @user_skill2 = @user_skills[rand_index]
+    end while (@user_skill2 == @user_skill1)
+
+    begin
+      rand_index = randseed.rand(@user_skills.count)
+      @user_skill3 = @user_skills[rand_index]
+    end while (@user_skill3 == @user_skill1 || @user_skill3 == @user_skill2)
   end
 end
