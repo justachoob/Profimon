@@ -9,7 +9,7 @@ class ClassBattlesController < ApplicationController
     require 'open-uri'
     require 'json'
 
-    @course_url = "http://www.sfu.ca/bin/wcm/course-outlines?2016/fall/" + @subject.to_s + "/" + @course_number.to_s
+    @course_url = "https://www.sfu.ca/bin/wcm/course-outlines?2016/fall/" + @subject.to_s + "/" + @course_number.to_s
     class_sections = JSON.parse(open(@course_url).read)
 
     # Enroll in the first section of the class
@@ -17,6 +17,9 @@ class ClassBattlesController < ApplicationController
     class_info = JSON.parse(open(@course_info_url).read)
 
     @instructor_name = class_info['instructor'][0]['name']
-    @room_number = class_info['courseSchedule'][0]['buildingCode'] + " " + class_info['courseSchedule'][0]['roomNumber']
+    @room_number = "Online"
+    if class_info['courseSchedule'][0]['buildingCode'] != nil
+      @room_number = class_info['courseSchedule'][0]['buildingCode'] + " " + class_info['courseSchedule'][0]['roomNumber']
+    end
   end
 end
