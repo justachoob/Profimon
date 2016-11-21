@@ -23,18 +23,21 @@
   </div>
 
   <div class="field">
-    <%= f.label :stamina, 'Stamina' %><br>
+    <%= f.label :stamina, 'Stamina Required:' %><br>
     <%= f.number_field :stamina, class: 'input_field_center' %>
+    <p class="help_info_for_field">(must be an integer between 0 and 100)</p>
   </div>
 
   <div class="field">
     <%= f.label :knowledge, 'Knowledge' %><br>
     <%= f.number_field :knowledge, class: 'input_field_center' %>
+    <p class="help_info_for_field">(must be an integer between 0 and 100)</p>
   </div>
 
   <div class="field">
     <%= f.label :homework, 'Homework' %><br>
     <%= f.number_field :homework, class: 'input_field_center' %>
+    <p class="help_info_for_field">(must be an integer between 0 and 100)</p>
   </div>
 
   <div class="actions">
