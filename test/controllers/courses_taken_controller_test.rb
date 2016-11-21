@@ -8,7 +8,7 @@ class CoursesTakenControllerTest < ActionDispatch::IntegrationTest
   
   test "should get show" do
     log_in_as(users(:one))
-    get profile_url, params: {"id"=>"1"}
+    get profile_url(@profile)
     assert_response :success
     
     get courses_taken_index_url

@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class CoursesFlowTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  #user login and flow tests
+  setup do
+    @user = users(:one)
+    @profile = profiles(:one)
+  end
+  
 end
