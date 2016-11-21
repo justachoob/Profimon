@@ -14,7 +14,13 @@ class UserLoginTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { name: "abcdefg", email: "example@example.com", password: "password1", password_confirmation: "password1", id: 3, admin: false} } 
     end
     
+    #flow update check if you user page
     assert_response :redirect
+    get "/users/3"
+    
+    #check if on new user page by selecting h1 element
+    assert_response :success
+    assert_select "h1", "Welcome, abcdefg!"
   end
   
   test "should not allow fake email when creating user" do
@@ -24,6 +30,8 @@ class UserLoginTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { name: "abcdefg", email: "not an email", password: "password1", password_confirmation: "password1", id: 3, admin: false} } 
     end
     
+    #does error occur?
+    assert_select "p", "The following errors occurred:"
     assert_response :success
   end
   
@@ -34,6 +42,8 @@ class UserLoginTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { name: "abcdefg", email: "example@example.com", password: "passw", password_confirmation: "password1", id: 3, admin: false} } 
     end
     
+    #does error occur?
+    assert_select "p", "The following errors occurred:"
     assert_response :success
   end
   
