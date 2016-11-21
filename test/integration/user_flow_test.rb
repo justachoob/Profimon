@@ -30,6 +30,8 @@ class UserLoginTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { name: "abcdefg", email: "not an email", password: "password1", password_confirmation: "password1", id: 3, admin: false} } 
     end
     
+    #does error occur?
+    assert_select "p", "The following errors occurred:"
     assert_response :success
   end
   
@@ -40,6 +42,8 @@ class UserLoginTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { name: "abcdefg", email: "example@example.com", password: "passw", password_confirmation: "password1", id: 3, admin: false} } 
     end
     
+    #does error occur?
+    assert_select "p", "The following errors occurred:"
     assert_response :success
   end
   
