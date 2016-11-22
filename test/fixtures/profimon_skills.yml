@@ -3,13 +3,34 @@
 one:
   name: MyString
   stamina: 1
-  subject: MyString
+  subject: All
   knowledge: 1
   homework: 1
 
 two:
   name: MyString
   stamina: 1
-  subject: MyString
+  subject: All
+  knowledge: 1
+  homework: 1
+
+three:
+  name: skill
+  stamina: 1
+  subject: All
+  knowledge: 1
+  homework: 1
+  
+four:
+  name: skillll
+  stamina: 1
+  subject: All
+  knowledge: 1
+  homework: 1
+  
+five:
+  name: skillleee
+  stamina: 1
+  subject: All
   knowledge: 1
   homework: 1

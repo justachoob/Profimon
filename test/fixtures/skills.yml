@@ -2,8 +2,36 @@
 
 one:
   name: MyString
-  subject: MyString
+  gpa_required: 1.0
+  subject: All
+  knowledge: 1
+  homework: 2
+  
 
 two:
   name: MyString
-  subject: MyString
+  gpa_required: 1.0
+  subject: All
+  knowledge: 1
+  homework: 2
+  
+three:
+  name: MyString
+  gpa_required: 1.0
+  subject: All
+  knowledge: 1
+  homework: 2
+  
+four:
+  name: MyString
+  gpa_required: 1.0
+  subject: All
+  knowledge: 1
+  homework: 2
+  
+five:
+  name: MyString
+  gpa_required: 1.0
+  subject: All
+  knowledge: 1
+  homework: 2
