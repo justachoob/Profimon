@@ -96,10 +96,10 @@ class AdminFlowTest < ActionDispatch::IntegrationTest
   test "should post to profimon skills" do
     
     
-   
+    
     log_in_as(users(:one))
     post profimon_skills_path, params: { profimon_skill: { name: @pskill.name, subject: @pskill.subject, stamina: @pskill.stamina, knowledge: @pskill.knowledge, homework: @pskill.homework }  }
-      
+   
      
     
     assert_redirected_to profimon_skills_url
