@@ -130,5 +130,33 @@ class AdminFlowTest < ActionDispatch::IntegrationTest
     
     assert_redirected_to profimon_skills_url
   end
+  
+    test "should update skill count" do
+      assert_difference('Skill.count') do
+        log_in_as(users(:one))
+        #get "/skills/new"
+        #assert_response :success
+        post skills_path, params: { skill: { name: "Abcdef", subject: "All", stamina: 1, gpa_required: 1, knowledge: 1, homework: 1 }  }
+      end
+    
+    assert_redirected_to skills_url
+  end
+  test "should patch skill" do
+    assert_no_difference('Skill.count') do
+      log_in_as(users(:one))
+      #get "/skills/1/edit", params: {id: 1}
+      patch "/skills/1", params: { skill: { id: 1, name: @skill.name, subject: @skill.subject, stamina: @skill.stamina, gpa_required: @skill.gpa_required, knowledge: @skill.knowledge, homework: @skill.homework }, id:1  }
+    end
+    
+    assert_redirected_to "/skills/1/edit"
+  end
+  test "should delete skill" do
+    assert_difference('Skill.count', -1) do
+      log_in_as(users(:one))
+      delete "/skills/1", params: {id:1}
+    end
+    
+    assert_redirected_to skills_url
+  end
       
 end

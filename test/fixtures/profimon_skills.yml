@@ -9,6 +9,7 @@ one:
   homework: 1
 
 two:
+  id: 2
   name: MyString
   stamina: 1
   subject: All
@@ -16,6 +17,7 @@ two:
   homework: 1
 
 three:
+  id: 3
   name: skill
   stamina: 1
   subject: All
@@ -23,6 +25,7 @@ three:
   homework: 1
   
 four:
+  id: 4
   name: skillll
   stamina: 1
   subject: All
@@ -30,6 +33,7 @@ four:
   homework: 1
   
 five:
+  id: 5
   name: skillleee
   stamina: 1
   subject: All
