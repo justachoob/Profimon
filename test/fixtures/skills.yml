@@ -1,9 +1,42 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: MyString
-  subject: MyString
+  gpa_required: 1
+  subject: All
+  knowledge: 1
+  homework: 2
+  
 
 two:
+  id: 2
   name: MyString
-  subject: MyString
+  gpa_required: 1.0
+  subject: All
+  knowledge: 1
+  homework: 2
+  
+three:
+  id: 3
+  name: MyString
+  gpa_required: 1.0
+  subject: All
+  knowledge: 1
+  homework: 2
+  
+four:
+  id: 4
+  name: MyString
+  gpa_required: 1.0
+  subject: All
+  knowledge: 1
+  homework: 2
+  
+five:
+  id: 5
+  name: MyString
+  gpa_required: 1.0
+  subject: All
+  knowledge: 1
+  homework: 2

@@ -32,6 +32,7 @@
     document.getElementById("skill_button4").disabled = true;
     document.getElementById("skill_button5").disabled = true;
     document.getElementById("skill_button6").disabled = true;
+    document.getElementById("battle_back_button").style.visibility = "visible";
 
     var newHeader = "<%= @subject %> <%= @course_number %>";
     newHeader = newHeader.concat(" is complete!");
@@ -259,7 +260,7 @@
   function battleStart(){
     // var out = document.getElementById("knowledge");
     // out.innerHTML = knowledge;
-
+    document.getElementById("battle_back_button").style.visibility = "hidden";
     midtermWeek = Math.floor((Math.random() * 4) + 4);
 
     // profTurn();
@@ -331,6 +332,9 @@
   <p id = "current_grade" style="text-align: center; font-size: 1.5em; color: #283;"></p>
   <!-- this is where the battle "happens", change it when possible-->
   <p id = "log" style="text-align: center; font-size: 1.3em; font-weight: bold;"></p>
+  <div style="text-align: center;">
+    <%= link_to "Back", root_url, class: "form_link", id: "battle_back_button" %>
+  </div>
   <!-- <p id = "log2"></p>-->
   <!-- <p id = "log3"></p>-->
   <!-- <p id = "info">STATS:<br/>-->
