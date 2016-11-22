@@ -1,15 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: MyString
   stamina: 1
-  subject: MyString
+  subject: All
   knowledge: 1
   homework: 1
 
 two:
+  id: 2
   name: MyString
   stamina: 1
-  subject: MyString
+  subject: All
+  knowledge: 1
+  homework: 1
+
+three:
+  id: 3
+  name: skill
+  stamina: 1
+  subject: All
+  knowledge: 1
+  homework: 1
+  
+four:
+  id: 4
+  name: skillll
+  stamina: 1
+  subject: All
+  knowledge: 1
+  homework: 1
+  
+five:
+  id: 5
+  name: skillleee
+  stamina: 1
+  subject: All
   knowledge: 1
   homework: 1
