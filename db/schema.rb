@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119231028) do
+ActiveRecord::Schema.define(version: 20161125015217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "courses_takens", force: :cascade do |t|
-    t.string   "profile_id"
-    t.float    "grade_earned"
-    t.string   "course_subject"
+  create_table "courses", force: :cascade do |t|
+    t.string   "subject"
     t.integer  "course_number"
+    t.float    "grade"
     t.string   "profimon_name"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "profile_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20161119231028) do
     t.string   "badges"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.string   "UserId"
     t.integer  "user_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"

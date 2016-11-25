@@ -2,6 +2,7 @@ class ClassBattlesController < ApplicationController
   before_action :confirm_logged_in
   
   def load
+    @course = Course.new
     @current_profile = Profile.find(params[:current_profile_id])
     @subject = params['subject']
     @course_number = params['course_number']

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CoursesTakenControllerTest < ActionDispatch::IntegrationTest
+class CoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @profile = profiles(:one)
@@ -11,8 +11,7 @@ class CoursesTakenControllerTest < ActionDispatch::IntegrationTest
     get profile_url(@profile)
     assert_response :success
     
-    get courses_taken_index_url
+    get course_url("current_profile_id" => 1)
     assert_response :success
   end
-
 end

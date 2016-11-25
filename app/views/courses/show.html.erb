@@ -1,10 +1,10 @@
 <div class="main">
 
   <p> All courses taken are: </p>
-  <% @courses_takens.each do |c| %>
+  <% @profile.courses.each do |c| %>
     <p>
       <strong>Course subject:</strong>
-      <%= c.course_subject %>
+      <%= c.subject %>
     </p>
     <p>
       <strong>Course number:</strong>
@@ -12,7 +12,7 @@
     </p>
     <p>
       <strong>Grade earned:</strong>
-      <%= c.grade_earned %>
+      <%= c.grade %>
     </p>
     <p>
       <strong>Profimon name:</strong>

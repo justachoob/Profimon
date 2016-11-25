@@ -20,11 +20,15 @@
     }
   }
 
+
+  function getResult(grade) {
+    document.getElementById("course_grade").value = grade;
+  }
   //ends the course
   //I disabled the buttons since that was the most obvious way to stop the game
   //Later on we need to add a button that sends the user to their profile page
   //while also sending the data of the completed course to their profile
-    //right now we can't leave this page "normally"
+    //right now we can't leave this page "normally" 
   function endClass(){
     document.getElementById("skill_button1").disabled = true;
     document.getElementById("skill_button2").disabled = true;
@@ -32,7 +36,7 @@
     document.getElementById("skill_button4").disabled = true;
     document.getElementById("skill_button5").disabled = true;
     document.getElementById("skill_button6").disabled = true;
-    document.getElementById("battle_back_button").style.visibility = "visible";
+    document.getElementById("finish_battle").style.visibility = "visible";
 
     var newHeader = "<%= @subject %> <%= @course_number %>";
     newHeader = newHeader.concat(" is complete!");
@@ -44,6 +48,8 @@
     if (finalGrade>4) finalGrade = 4;
     result = result.concat(finalGrade);
     document.getElementById("log").innerHTML = result;
+    getResult(finalGrade);
+    
   }
 
   //does the calculations
@@ -332,9 +338,6 @@
   <p id = "current_grade" style="text-align: center; font-size: 1.5em; color: #283;"></p>
   <!-- this is where the battle "happens", change it when possible-->
   <p id = "log" style="text-align: center; font-size: 1.3em; font-weight: bold;"></p>
-  <div style="text-align: center;">
-    <%= link_to "Back", root_url, class: "form_link", id: "battle_back_button" %>
-  </div>
   <!-- <p id = "log2"></p>-->
   <!-- <p id = "log3"></p>-->
   <!-- <p id = "info">STATS:<br/>-->
@@ -344,5 +347,24 @@
   <!--  Current week: <bdi id="curWeek"></bdi><br/>-->
   <!--  Midterm week: <bdi id="midterm"></bdi><br/> -->
   <!-- </p> -->
+  <div id = "form">
+
+   <%= form_for @course ,:url => {:controller => "courses", :action => "create"} do |f| %> 
+    <%=f.hidden_field :subject , :value => params[:subject] %>
+    <%=f.hidden_field :course_number , :value => params[:course_number] %>
+    <%=f.hidden_field :profile_id , :value => params[:current_profile_id] %>
+    <%=f.hidden_field :profimon_name , :value => @instructor_name %>
+    <%=f.hidden_field :grade , class: 'input_field_center'%>
+    <%=f.submit "Done", class: "form_button", id: "finish_battle", :style => "visibility: hidden;" %>
+
+    <% end %>
+     
+  </div>
+
+
+
 </div>
 </body>
+
+
+<%= debug(params) %>

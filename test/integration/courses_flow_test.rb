@@ -12,7 +12,7 @@ class CoursesFlowTest < ActionDispatch::IntegrationTest
     get profile_url(@profile)
     assert_response :success
     
-    get courses_taken_index_url
+    get course_url( "current_profile_id" => 1)
     assert_response :success
     
     assert_select "p", "All courses taken are:"
