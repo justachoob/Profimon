@@ -10,23 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126025121) do
+ActiveRecord::Schema.define(version: 20161126092626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "badges", force: :cascade do |t|
-    t.string   "subject"
-    t.boolean  "finished"
-    t.integer  "first_year"
-    t.integer  "second_year"
-    t.integer  "third_year"
-    t.integer  "fourth_year"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "profile_id"
-    t.index ["profile_id"], name: "index_badges_on_profile_id", using: :btree
-  end
 
   create_table "courses", force: :cascade do |t|
     t.string   "subject"
@@ -94,5 +81,4 @@ ActiveRecord::Schema.define(version: 20161126025121) do
     t.boolean  "admin",           default: false
   end
 
-  add_foreign_key "badges", "profiles"
 end

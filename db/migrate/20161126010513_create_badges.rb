@@ -4,10 +4,10 @@ class CreateBadges < ActiveRecord::Migration[5.0]
       t.integer :profile_id
       t.string :subject
       t.boolean :finished, :default => false
-      t.integer :first_year, :default => 0
-      t.integer :second_year, :default => 0
-      t.integer :third_year, :default => 0
-      t.integer :fourth_year, :default => 0
+      t.integer :firstYear, :default => 0
+      t.integer :secondYear, :default => 0
+      t.integer :thirdYear, :default => 0
+      t.integer :fourthYear, :default => 0
       t.timestamps
     end
   end

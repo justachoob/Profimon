@@ -15,34 +15,38 @@ class BadgesController < ApplicationController
     @profile = Profile.find(id)
     @year = number.to_i/100
     @badgeFound = false
-    @profile.badges.each do |b| #iterate through each of them to see if the badge is there
-      if @b.subject == subject
-          @badge = @b
-          @badgeFound = true
-      end
-    end
+    #@profile.badges.each do |b| #iterate through each of them to see if the badge is there
+    #  if @b.subject == subject
+    #      @badge = @b
+    #      @badgeFound = true
+    #  end
+    #end
     
     #otherwise make a new badge
     if (@badgeFound!=true)
       #change_types
       #@badge = Badge.new(params)
       @badge = Badge.create(:profile_id => id, :subject => subject)
-      @badge.subject = subject
+      #@badge.subject = subject
+      @badge.firstYear = 0
+      @badge.secondYear = 0
+      @badge.thirdYear = 0
+      @badge.fourthYear = 0
     end
     #increment the appropriate year
     if @year == 1
-      #@badge.first_year = @badge.first_year+1
+      #@badge.firstYear +=1
     elsif @year == 2
-      #@badge.second_year = @badge.second_year+1
+      #@badge.secondYear +=1
     elsif @year == 3
-      #@badge.third_year = @badge.third_year+1
+      #@badge.thirdYear +=1
     elsif @year == 4
-      #@badge.fourth_year = @badge.fourth_year+1
+      #@badge.fourthYear +=1
     end
     
-    #if (@badge.first_year>0) && (@badge.first_year>0) && (@badge.first_year>0) && (@badge.fourth_year>0)
-    #    @badge.finished = true;
-    #end
+    if (@badge.firstYear>0) && (@badge.secondYear>0) && (@badge.thirdYear>0) && (@badge.fourthYear>0)
+        @badge.finished = true;
+    end
     @badge.save
   end
 	       
