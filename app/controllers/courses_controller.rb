@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
 
-	def show
+  def show
     @profile = Profile.find(params[:current_profile_id])
   end
 
@@ -10,6 +10,9 @@ class CoursesController < ApplicationController
     change_types
     @course = Course.new(course_params)
     @course.save
+    if (course_params[:grade].to_i>1)
+      BadgesController.addClass(course_params[:profile_id], course_params[:course_number], course_params[:subject])
+    end
     redirect_to root_url
   end
 
