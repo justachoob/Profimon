@@ -52,6 +52,29 @@
     
   }
 
+//gets the battle to end with the desired grade
+//1=A
+//2=B
+//3=F
+function changeMark(mark){
+  if (mark == 1){
+    grade = 100;
+     var finalGrade = grade / 25;
+    getResult(finalGrade);
+  } 
+  if (mark == 2){
+    grade = 80;
+     var finalGrade = grade / 25;
+    getResult(finalGrade);
+  } 
+  if (mark == 3){
+    grade = 30;
+    var finalGrade = grade / 25;
+    getResult(finalGrade);
+  } 
+  document.getElementById("finish_battle").style.visibility = "visible";
+}
+
   //does the calculations
   function modifyStats(){
     stamina -= current_stamina;
@@ -356,7 +379,6 @@
     <%=f.hidden_field :profimon_name , :value => @instructor_name %>
     <%=f.hidden_field :grade , class: 'input_field_center'%>
     <%=f.submit "Done", class: "form_button", id: "finish_battle", :style => "visibility: hidden;" %>
-
     <% end %>
      
   </div>

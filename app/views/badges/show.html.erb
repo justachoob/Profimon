@@ -1,0 +1,33 @@
+<div class="main">
+
+  <p> This profile's badges: </p>
+  <% @profile.badges.each do |b| %>
+    <p>
+      <strong>Course subject:</strong>
+      <%= b.subject %>
+    </p>
+    <p>
+      <strong>Badge complete:</strong>
+      <%= b.finished %>
+    </p>
+    <p>
+      <strong>First year courses:</strong>
+      <%= b.first_year %>
+    </p>
+    <p>
+      <strong>Second year courses:</strong>
+      <%= b.second_year %>
+    </p>
+    <p>
+      <strong>Third year courses:</strong>
+      <%= b.third_year %>
+    </p>
+    <p>
+      <strong>Fourth year courses:</strong>
+      <%= b.fourth_year %>
+    </p>
+    <%= link_to 'Delete', b, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%end%>
+
+
+</div>

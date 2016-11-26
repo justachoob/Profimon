@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  
   get 'class_battles/load'
 
   get 'skills/new'
@@ -22,5 +23,6 @@ Rails.application.routes.draw do
   resources :profiles
   resources :skills
   resources :profimon_skills
+  resources :badges
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
