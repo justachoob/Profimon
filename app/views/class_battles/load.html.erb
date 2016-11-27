@@ -10,7 +10,6 @@
   var midtermWeek = 5; // Midterm will be in Week 4, 5, 6, or 7
   var midtermDifficulty = 3; //calculate difficulties based on year instead of hard coding them like this
   var finalDifficulty = 6;
-
   //moves the game forward, and ends after 10 weeks
   function nextWeek(){
     week += 1;
@@ -19,8 +18,6 @@
       endClass();
     }
   }
-
-
   function getResult(grade) {
     document.getElementById("course_grade").value = grade;
   }
@@ -37,11 +34,9 @@
     document.getElementById("skill_button5").disabled = true;
     document.getElementById("skill_button6").disabled = true;
     document.getElementById("finish_battle").style.visibility = "visible";
-
     var newHeader = "<%= @subject %> <%= @course_number %>";
     newHeader = newHeader.concat(" is complete!");
     document.getElementById("classStatus").innerHTML = newHeader;
-
     //this needs to be rebalanced, it's way to easy to get an A+
     var result = "Grade points for this course: ";
     var finalGrade = grade / 25;
@@ -51,19 +46,38 @@
     getResult(finalGrade);
     
   }
-
+//sets the desired grade for the sale pf testing
+//1=A
+//2=B
+//3=F
+function setGrade(mark){
+  if (mark == 1){
+    grade = 100;
+     var finalGrade = grade / 25;
+    getResult(finalGrade);
+  } 
+  if (mark == 2){
+    grade = 80;
+     var finalGrade = grade / 25;
+    getResult(finalGrade);
+  } 
+  if (mark == 3){
+    grade = 0;
+    var finalGrade = grade / 25;
+    getResult(finalGrade);
+  } 
+  document.getElementById("finish_battle").style.visibility = "visible";
+}
   //does the calculations
   function modifyStats(){
     stamina -= current_stamina;
     knowledge += current_knowledge / 10;
     knowledge = Math.round(knowledge);
     grade += current_grade;
-
     if (stamina < 0) stamina = 0;
     else if (stamina > 200) stamina = 200;
     if (grade < 0) grade = 0;
   }
-
   //this is coded very similar to the midterm, so these functions need to be combined
   //once we have the database stuff worked out
   function final(){
@@ -71,23 +85,19 @@
     // var out = document.getElementById("profimon_speech");
     // var notif = "Time for the final exam!";
     // var current_grade = knowledge - finalDifficulty;
-
     // if (stamina<3){
     //   notif = notif.concat("<br/> You did not have enough stamina, and failed!");
     //   grade -= finalDifficulty;
     //   stamina = 0;
     //   notif = addInfo(notif, 0, 2, -finalDifficulty);
     // }
-
     // else{
     //   notif = addInfo(notif, 0, 2, grde);
     //   stamina -= 2;
     // grade += grde;
     // }
-
     // out.innerHTML = notif;
   }
-
    //prof decides what to do
     //(can only use Tutorial and Lecture as random skills at the moment)
   function profTurn(){
@@ -119,11 +129,9 @@
         profMove("<%= @prof_skill9.name %>", <%= @prof_skill9.knowledge %>, <%= @prof_skill9.homework %>, 20);
       else
         profMove("<%= @prof_skill0.name %>", <%= @prof_skill0.knowledge %>, <%= @prof_skill0.homework %>, 20);
-
       // var out = document.getElementById("log2");
     }
   }
-
   //prof does their random move
   function profMove(move, move_knowledge, move_homework, move_stamina){
     var out = document.getElementById("profimon_speech");
@@ -131,46 +139,37 @@
     notif = notif.concat(" used ");
     notif = notif.concat(move);
     notif = notif.concat("!");
-
     // if (stamina < 0){
     //   if (stamina + current_stamina < 0){
     //     notif = notif.concat("<br/>You received no benefit because your stamina was too low!");
     // return;
     //   }
     // }
-
     // notif = addInfo(notif, move_knowledge, move_homework, move_stamina);
     out.innerHTML = notif;
-
     // Update profimon stamina bar
     var pstamina = document.getElementById("profimon_stamina");
     profimon_stamina -= 20;   // Need to update this later to reflect the stamina required for the move
     pstamina.setAttribute("value", String(profimon_stamina));
-
     var temp_knowledge = current_knowledge + knowledge - move_knowledge;
     if (temp_knowledge > 5)
       temp_knowledge = 5;
     var temp_homework = current_homework - move_homework;
     if (temp_homework > 5)
       temp_homework = 5;
-
     current_grade = Math.floor((temp_knowledge + temp_homework + 15) / 4);
-
     modifyStats();
   }
-
   function midterm(){
     profMove("Time for the midterm!", 90, 0, 20);
     // var out = document.getElementById("log2");
     // var notif = "Time for the midterm!";
     // var grde = knowledge - midtermDifficulty;
-
     // if (stamina<2){
     //  notif = notif.concat("<br/> You did not have enough stamina, and failed!");
     //  grade -=midtermDifficulty;
     //  stamina = 0;
     //  notif = addInfo(notif, 0, 2, -midtermDifficulty);
-
     // }
     // else{
     //  notif = addInfo(notif, 0, 2, grde);
@@ -178,9 +177,7 @@
     // grade += grde;
     // }
     // out.innerHTML = notif;
-
   }
-
   //puts all the modifiers there for the sake of testing
   //maybe we should take this out later
   function addInfo(string, current_knowledge, current_homework, current_stamina){
@@ -192,15 +189,11 @@
     string = string.concat(current_stamina);
     return string;
   }
-
   function playerMove(move, move_knowledge, move_homework, move_stamina){
-
     var out = document.getElementById("player_speech");
-
     // Clear profimon's speech
     var pspeech = document.getElementById("profimon_speech");
     pspeech.innerHTML = "";
-
     //check if there's enough stamina
     if (stamina - move_stamina < 0){
       var stamNotif = "Not enough stamina for ";
@@ -209,33 +202,26 @@
       out.innerHTML = stamNotif;
       return;
     }
-
     // Update current stat variables
     current_knowledge = move_knowledge + Math.floor((Math.random() * 21) - 10);
     current_homework = move_homework + Math.floor((Math.random() * 21) - 10);
     current_stamina = move_stamina;
-
     if (current_knowledge < 0) {
       current_knowledge = 0;
     }
     if (current_homework < 0) {
       current_homework = 0;
     }
-
     var notif = "<%= @current_profile.pname %>";
     notif = notif.concat(" used ");
     notif = notif.concat(move);
     notif = notif.concat("!");
     // notif = addInfo(notif, current_knowledge, current_homework, current_stamina);
     out.innerHTML = notif;
-
     setTimeout(profTurn, 1000);
-
     // modifyStats();
-
     setTimeout(nextWeek, 1000);
   }
-
   //shows the stats
   function display_info() {
     // var out = document.getElementById("knowledge");
@@ -243,7 +229,6 @@
     // out = document.getElementById("stamina");
     // out.innerHTML = stamina;
     out = document.getElementById("current_grade");
-
     if (week == 1) {
       out.innerHTML = "Current grade: " + grade + "\%";
     }
@@ -253,22 +238,18 @@
     else {
       out.innerHTML = "Current grade: " + grade + "\% (" + String(current_grade) + "\%)";
     }
-
     out = document.getElementById("current_week");
     out.innerHTML = "Week " + week;
     // out = document.getElementById("midterm");
     // out.innerHTML = midtermWeek;
-
     var bar = document.getElementById("player_stamina");
     bar.setAttribute("value", String(stamina));
   }
-
   function battleStart(){
     // var out = document.getElementById("knowledge");
     // out.innerHTML = knowledge;
     document.getElementById("battle_back_button").style.visibility = "hidden";
     midtermWeek = Math.floor((Math.random() * 4) + 4);
-
     // profTurn();
     display_info();
   }
@@ -356,12 +337,13 @@
     <%=f.hidden_field :profimon_name , :value => @instructor_name %>
     <%=f.hidden_field :grade , class: 'input_field_center'%>
     <%=f.submit "Done", class: "form_button", id: "finish_battle", :style => "visibility: hidden;" %>
-
     <% end %>
      
   </div>
 
-
+<button type="button" id="gradeButton" class="skill_button" onclick = "setGrade(1)">Set grades to A</button>
+<button type="button" id="gradeButton" class="skill_button" onclick = "setGrade(2)">Set grades to B</button>
+<button type="button" id="gradeButton" class="skill_button" onclick = "setGrade(3)">Set grades to F</button>
 
 </div>
 </body>

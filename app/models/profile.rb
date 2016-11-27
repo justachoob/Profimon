@@ -2,6 +2,7 @@ class Profile < ApplicationRecord
 	belongs_to :user
 	after_initialize :default_values
   has_many :courses
+  has_many :badges
 
     def default_values
       self.current_gpa  ||= 4.0
