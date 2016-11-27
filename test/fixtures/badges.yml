@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyString
+  profile_id: 1
+  completed: false
+  first_year: 1
+  second_year: 1
+  third_year: 1
+  fourth_year: 1
+
+two:
+  subject: MyString
+  profile_id: 1
+  completed: false
+  first_year: 1
+  second_year: 1
+  third_year: 1
+  fourth_year: 1

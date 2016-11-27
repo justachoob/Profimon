@@ -1,5 +1,5 @@
 <div class="main">
-
+<p id="notice"><%= notice %></p>
   <p> All courses taken are: </p>
   <% @profile.courses.each do |c| %>
     <p>
@@ -18,6 +18,7 @@
       <strong>Profimon name:</strong>
       <%= c.profimon_name %>
     </p>
+    <%= link_to 'Delete', c, method: :delete, data: { confirm: 'Are you sure?' } %>
   <%end%>
 
 
