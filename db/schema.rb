@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126220527) do
+ActiveRecord::Schema.define(version: 20161130073023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20161126220527) do
     t.integer  "fourth_year", default: 0
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "progress",    default: 0
   end
 
   create_table "courses", force: :cascade do |t|
@@ -33,18 +34,11 @@ ActiveRecord::Schema.define(version: 20161126220527) do
     t.float    "grade"
     t.string   "profimon_name"
     t.integer  "profile_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  create_table "courses_takens", force: :cascade do |t|
-    t.string   "profile_id"
-    t.float    "grade_earned"
-    t.string   "course_subject"
-    t.integer  "course_number"
-    t.string   "profimon_name"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "badge_id"
+    t.integer  "status",        default: 0
+    t.integer  "timesTaken",    default: 1
   end
 
   create_table "profiles", force: :cascade do |t|
