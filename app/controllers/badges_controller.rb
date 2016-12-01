@@ -6,42 +6,21 @@ class BadgesController < ApplicationController
 
 
   def create
-        change_types
-        @badge = Badge.new(badge_params)
-        @badge.save
-        redirect_to root_url
+    change_types
+    @badge = Badge.new(badge_params)
+    @badge.save
+    redirect_to root_url
   end
+  
+  def self.updateProgress(id, number)
+    @badge = Badge.find(id)
 
-  def self.addClass(id, number, subject)
-    @profile = Profile.find(id)
-    @badgeFound = false
-    @badge
-    @profile.badges.each do |b| #iterate through each of them to see if the badge is there
-      if b.subject == subject
-          @badge = b
-          @badgeFound = true
-      end
-    end
-    if (@badgeFound==false)
-      @badge = Badge.create(:profile_id => id, :subject => subject)
-    end
-    @year = number.to_i/100
-    if @year==1
-      @badge.first_year = @badge.first_year+1
-    end
-    if @year==2
-      @badge.second_year = @badge.second_year+1
-    end
-    if @year==3
-      @badge.third_year = @badge.third_year+1
-    end
-    if @year==4
-      @badge.fourth_year = @badge.fourth_year+1
-    end
+    @badge.progress = @badge.progress+number/100
     
-    if ((@badge.first_year>0)&&(@badge.second_year>0)&&(@badge.third_year>0)&&(@badge.fourth_year>0))
+    if (@badge.progress>14)
       @badge.completed = true
     end
+    
     @badge.save
   end
   
