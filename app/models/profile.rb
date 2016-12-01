@@ -5,10 +5,14 @@ class Profile < ApplicationRecord
   has_many :badges
 
     def default_values
-      self.current_gpa  ||= 4.0
+      self.current_gpa ||= 0
       self.num_of_courses_taken ||= 0
 
     end
+
+		def current_gpa
+			courses.average(:grade).to_f
+		end
 
   validates :pname, :presence=>true
   validates :faculty, :presence=>true

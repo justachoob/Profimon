@@ -13,8 +13,13 @@
 </p>
 
 <p>
-  <strong>Current GPA:</strong>
-  <%= @profile.current_gpa %>
+
+  <%if @profile.current_gpa == 0.0 && @profile.courses.length == 0%>
+    <strong>Current GPA:</strong> N/A
+  <% else %>
+    <strong>Current GPA:</strong>
+    <%= @profile.current_gpa %>
+  <%end%>
 </p>
 
 <p>

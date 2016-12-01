@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20161130210135) do
     t.integer  "badge_id"
   end
 
+
+
   create_table "profiles", force: :cascade do |t|
     t.string   "pname"
     t.string   "faculty"
@@ -86,5 +88,7 @@ ActiveRecord::Schema.define(version: 20161130210135) do
     t.datetime "updated_at",                      null: false
     t.boolean  "admin",           default: false
   end
+
+  
 
 end

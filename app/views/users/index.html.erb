@@ -24,7 +24,12 @@
       <td>
         <% @characters = Profile.where(:user_id => u.id) %>
         <% @characters.each do |c| %>
-          <%= link_to c.pname, profile_path(c) %> (GPA: <%= c.current_gpa %>)<br>
+          <%= link_to c.pname, profile_path(c) %>
+          <%if c.current_gpa == 0.0 && c.courses.length == 0 %>
+				     (GPA: N/A)
+				  <% else %>
+				     (GPA:<%= c.current_gpa %>)
+				  <%end%><br>
         <% end %>
       </td>
       <td><%= link_to 'Go to User Page', u %></td>
