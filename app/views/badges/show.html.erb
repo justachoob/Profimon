@@ -11,21 +11,19 @@
       <strong>Completed:</strong>
       <%= b.completed %>
     </p>
-    <p>
-      <strong>First year courses taken:</strong>
-      <%= b.first_year %>
+        <p>
+      <strong>Progress:</strong>
+      <%= b.progress %>/15
     </p>
     <p>
-      <strong>Second year courses taken:</strong>
-      <%= b.second_year %>
-    </p>
-    <p>
-      <strong>Third year courses taken:</strong>
-      <%= b.third_year %>
-    </p>
-    <p>
-      <strong>Fourth year courses taken:</strong>
-      <%= b.fourth_year %>
+      <strong>Courses taken for this badge:</strong>
+      <% b.course.each do |c| %>
+        <br/>
+        <%= c.subject %> <%= c.course_number %> <br/>
+        Status: <%= c.status %> <br/>
+        Grade: <%= c.grade %> <br/>
+        Times taken: <%= c.timesTaken %><br/>
+      <%end%>
     </p>
     <%= link_to 'Delete', b, method: :delete, data: { confirm: 'Are you sure?' } %>
   <%end%>
