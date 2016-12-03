@@ -25,7 +25,7 @@
   //I disabled the buttons since that was the most obvious way to stop the game
   //Later on we need to add a button that sends the user to their profile page
   //while also sending the data of the completed course to their profile
-    //right now we can't leave this page "normally" 
+    //right now we can't leave this page "normally"
   function endClass(){
     document.getElementById("skill_button1").disabled = true;
     document.getElementById("skill_button2").disabled = true;
@@ -44,7 +44,7 @@
     result = result.concat(finalGrade);
     document.getElementById("log").innerHTML = result;
     getResult(finalGrade);
-    
+
   }
 //sets the desired grade for the sale pf testing
 //1=A
@@ -55,17 +55,17 @@ function setGrade(mark){
     grade = 100;
      var finalGrade = grade / 25;
     getResult(finalGrade);
-  } 
+  }
   if (mark == 2){
     grade = 80;
      var finalGrade = grade / 25;
     getResult(finalGrade);
-  } 
+  }
   if (mark == 3){
     grade = 0;
     var finalGrade = grade / 25;
     getResult(finalGrade);
-  } 
+  }
   document.getElementById("finish_battle").style.visibility = "visible";
 }
   //does the calculations
@@ -282,11 +282,11 @@ function setGrade(mark){
       </td>
       <td>
         <div style="float: left;">
-          <div style="height: 50px; width: 200px">
+          <div style="height: 70px; width: 200px">
               <!-- Put the name of the player's skill here -->
               <p id="player_speech"></p>
           </div>
-          
+
           <!--Add an onclick method to each of these buttons-->
           <!--All buttons should go to the same onclick method-->
           <!--Each button passes different values as parameters depending on the skill's stats-->
@@ -299,7 +299,7 @@ function setGrade(mark){
             <button type="button" id="skill_button6" class="skill_button" onclick = "playerMove('<%= @user_skill3.name %>', <%= @user_skill3.knowledge %>, <%= @user_skill3.homework %>, <%= @user_skill3.stamina %>)"><%= @user_skill3.name %></button>
           </div>
         </div>
-        <div style="float: right; height: 50px; width: 200px">
+        <div style="float: right; height: 70px; width: 200px">
           <!-- Put the name of the profimon's skill here -->
            <p id="profimon_speech"></p>
         </div>
@@ -330,7 +330,7 @@ function setGrade(mark){
   <!-- </p> -->
   <div id = "form">
 
-   <%= form_for @course ,:url => {:controller => "courses", :action => "create"} do |f| %> 
+   <%= form_for @course ,:url => {:controller => "courses", :action => "create"} do |f| %>
     <%=f.hidden_field :subject , :value => params[:subject] %>
     <%=f.hidden_field :course_number , :value => params[:course_number] %>
     <%=f.hidden_field :profile_id , :value => params[:current_profile_id] %>
@@ -338,7 +338,7 @@ function setGrade(mark){
     <%=f.hidden_field :grade , class: 'input_field_center'%>
     <%=f.submit "Done", class: "form_button", id: "finish_battle", :style => "visibility: hidden;" %>
     <% end %>
-     
+
   </div>
 
 <button type="button" id="gradeButton" class="skill_button" onclick = "setGrade(1)">Set grades to A</button>

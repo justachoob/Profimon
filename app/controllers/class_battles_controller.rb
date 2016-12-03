@@ -1,6 +1,6 @@
 class ClassBattlesController < ApplicationController
   before_action :confirm_logged_in
-  
+
   def load
     @course = Course.new
     @current_profile = Profile.find(params[:current_profile_id])
@@ -53,5 +53,11 @@ class ClassBattlesController < ApplicationController
     @prof_skill8 = @profimon_skills[@profimon_rand_array[8]]
     @prof_skill9 = @profimon_skills[@profimon_rand_array[9]]
     @prof_skill0 = @profimon_skills[@profimon_rand_array[0]]
+
+    @difficulty_url = "https://spreadsheets.google.com/feeds/cells/1EmwODxz1VFG9hhjUb6a7e-RhKW28R3LoQYvFyr27uW0/1/public/values?alt=json-in-script"
+    @course_subject_number = @subject + " " + @course_number
+    class_sections = JSON.parse(open(@course_url).read)
+
+
   end
 end
