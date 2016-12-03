@@ -8,8 +8,9 @@
   var profimon_stamina = 200;
   var week = 1;
   var midtermWeek = 5; // Midterm will be in Week 4, 5, 6, or 7
-  var midtermDifficulty = 3; //calculate difficulties based on year instead of hard coding them like this
-  var finalDifficulty = 6;
+  // var midtermDifficulty = 3; //calculate difficulties based on year instead of hard coding them like this
+  // var finalDifficulty = 6;
+  var courseDifficulty = 2;
   //moves the game forward, and ends after 10 weeks
   function nextWeek(){
     week += 1;
@@ -81,7 +82,7 @@ function setGrade(mark){
   //this is coded very similar to the midterm, so these functions need to be combined
   //once we have the database stuff worked out
   function final(){
-    profMove("Time for the final exam!", 150, 0, 20);
+    profMove("Time for the final exam!", 160, 0, 20);
     // var out = document.getElementById("profimon_speech");
     // var notif = "Time for the final exam!";
     // var current_grade = knowledge - finalDifficulty;
@@ -157,11 +158,15 @@ function setGrade(mark){
     var temp_homework = current_homework - move_homework;
     if (temp_homework > 5)
       temp_homework = 5;
-    current_grade = Math.floor((temp_knowledge + temp_homework + 15) / 4);
+    current_grade = Math.floor((temp_knowledge + temp_homework + 30) / 4 - (1.2 * courseDifficulty));
+    current_grade += Math.floor((Math.random() * 6) - 3);
+    if (current_grade > 10 && Math.random() > 0.04)
+      current_grade = 10;
+
     modifyStats();
   }
   function midterm(){
-    profMove("Time for the midterm!", 90, 0, 20);
+    profMove("Time for the midterm!", 110, 10, 20);
     // var out = document.getElementById("log2");
     // var notif = "Time for the midterm!";
     // var grde = knowledge - midtermDifficulty;
@@ -203,8 +208,8 @@ function setGrade(mark){
       return;
     }
     // Update current stat variables
-    current_knowledge = move_knowledge + Math.floor((Math.random() * 21) - 10);
-    current_homework = move_homework + Math.floor((Math.random() * 21) - 10);
+    current_knowledge = move_knowledge + Math.floor((Math.random() * 11) - 5);
+    current_homework = move_homework + Math.floor((Math.random() * 11) - 5);
     current_stamina = move_stamina;
     if (current_knowledge < 0) {
       current_knowledge = 0;
@@ -248,8 +253,9 @@ function setGrade(mark){
   function battleStart(){
     // var out = document.getElementById("knowledge");
     // out.innerHTML = knowledge;
-    document.getElementById("battle_back_button").style.visibility = "hidden";
+    // document.getElementById("battle_back_button").style.visibility = "hidden";
     midtermWeek = Math.floor((Math.random() * 4) + 4);
+    courseDifficulty = <%= @course_difficulty %>;
     // profTurn();
     display_info();
   }
@@ -319,7 +325,6 @@ function setGrade(mark){
   <p id = "current_grade" style="text-align: center; font-size: 1.5em; color: #283;"></p>
   <!-- this is where the battle "happens", change it when possible-->
   <p id = "log" style="text-align: center; font-size: 1.3em; font-weight: bold;"></p>
-  <p><%= @course_difficulty %></p>
   <!-- <p id = "log2"></p>-->
   <!-- <p id = "log3"></p>-->
   <!-- <p id = "info">STATS:<br/>-->
