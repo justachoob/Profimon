@@ -56,8 +56,15 @@ class ClassBattlesController < ApplicationController
 
     @difficulty_url = "https://spreadsheets.google.com/feeds/cells/1EmwODxz1VFG9hhjUb6a7e-RhKW28R3LoQYvFyr27uW0/1/public/values?alt=json-in-script"
     @course_subject_number = @subject + " " + @course_number
-    class_sections = JSON.parse(open(@course_url).read)
-
-
+    @course_subject_number = @course_subject_number.upcase
+    @difficulties = open(@difficulty_url).read
+    @difficulties = @difficulties[@difficulties.index('{')..-3]
+    @difficulties = JSON.parse(@difficulties)
+    @course_difficulty = 2
+    for i in 2..@difficulties["feed"]["entry"].count-1
+      if @course_subject_number == @difficulties["feed"]["entry"][i]["gs$cell"]["$t"]
+        @course_difficulty = @difficulties["feed"]["entry"][i+1]["gs$cell"]["$t"]
+      end
+    end
   end
 end
