@@ -41,13 +41,6 @@ ActiveRecord::Schema.define(version: 20161130210135) do
     t.integer  "badge_id"
   end
 
-  create_table "people", force: :cascade do |t|
-    t.string   "pname"
-    t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "profiles", force: :cascade do |t|
     t.string   "pname"
     t.string   "faculty"
