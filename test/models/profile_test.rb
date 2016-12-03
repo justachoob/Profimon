@@ -29,4 +29,16 @@ class ProfileTest < ActiveSupport::TestCase
   	assert_not profile.valid?
   
   end
+  
+  test "valid badge associated to profile" do
+    profile = Profile.reflect_on_association(:badges)
+    profile.macro == :has_many
+    assert profile.validate?
+  end
+    
+  test "valid course associated to profile" do
+    profile = Profile.reflect_on_association(:courses)
+    profile.macro == :has_many
+    assert profile.validate?
+  end
 end

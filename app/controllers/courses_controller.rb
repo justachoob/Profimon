@@ -20,7 +20,7 @@ class CoursesController < ApplicationController
     if (@badgeFound==true)
       @courseFound = false
       @course
-      @badge.course.each do |c| #iterate through each of them to see if the course is there
+      @badge.courses.each do |c| #iterate through each of them to see if the course is there
         if (c.course_number.to_i == course_params[:course_number].to_i)
           @course = c
           @courseFound = true

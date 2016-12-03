@@ -83,7 +83,8 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Profile.count') do
       log_in_as(users(:one))
       #failure expected 3, actual 2
-      post profiles_path, params: { profile: { badges: @profile.badges, courses_taken: @profile.courses_taken, current_gpa: @profile.current_gpa, faculty: @profile.faculty, num_of_courses_taken: @profile.num_of_courses_taken, pname: @profile.pname } }
+      post profiles_path, params: { profile: { pname: "MeowMeow", faculty: "Beedie", num_of_courses_taken: 0} }
+      #post profiles_path, params: { profile: { badges: @profile.badges, courses_taken: @profile.courses_taken, current_gpa: @profile.current_gpa, faculty: @profile.faculty, num_of_courses_taken: @profile.num_of_courses_taken, pname: @profile.pname } }
     end
         
     assert_redirected_to profile_url(Profile.last)
