@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :confirm_logged_in
+  before_action :confirm_own_account_page
 
 
 
