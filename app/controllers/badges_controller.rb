@@ -1,4 +1,6 @@
 class BadgesController < ApplicationController
+  
+  before_action :confirm_logged_in
 
 	def show
     @profile = Profile.find(params[:current_profile_id])
