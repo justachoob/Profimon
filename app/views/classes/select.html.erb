@@ -51,12 +51,41 @@
       sbutton.disabled = false;
     }
   }
+
+  function open_help_modal() {
+    var modal = document.getElementById('modal');
+    modal.style.display = "block";
+  }
+
+  function close_help_modal() {
+    var modal = document.getElementById('modal');
+    modal.style.display = "none";
+  }
 </script>
+
 
 <div class="main">
   <% if flash[:notice] %>
 		<div class="notice"><%= flash[:notice] %></div>
   <% end %>
+
+  <button id="open_help" onclick="open_help_modal()">?</button>
+
+  <div id="modal" class="modal_background">
+    <div class="help_modal">
+      <span id="close" onclick="close_help_modal()">×</span>
+      <h2>Select a course for your character!</h2>
+      <p>Use the drop-down menus to select a course for your character.</p>
+      <p>Note:</p>
+      <ul>
+        <li>1st year students only have access to 1st year courses</li>
+        <li>2nd year students only have access to 1st and 2nd year courses</li>
+        <li>3rd year students only have access to 1st, 2nd, and 3rd year courses</li>
+        <li>4th year students only have access to 1st, 2nd, 3rd, and 4th year courses</li>
+      </ul>
+    </div>
+  </div>
+
   <h1>Select a course for <%= @current_profile.pname %>!</h1>
   <%= form_tag({ :action => 'enroll' }) do %>
     <%= label_tag(:subject, "Subject:") %>

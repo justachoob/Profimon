@@ -243,13 +243,28 @@ function setGrade(mark){
     else {
       out.innerHTML = "Current grade: " + grade + "\% (" + String(current_grade) + "\%)";
     }
-    out = document.getElementById("current_week");
-    out.innerHTML = "Week " + week;
+    if (week == 1) {
+      displayWeek();
+    }
+    else {
+      setTimeout(displayWeek, 1600);
+    }
     // out = document.getElementById("midterm");
     // out.innerHTML = midtermWeek;
     var bar = document.getElementById("player_stamina");
     bar.setAttribute("value", String(stamina));
   }
+
+  function displayWeek() {
+    out = document.getElementById("current_week");
+    if (week < 11) {
+      out.innerHTML = "Week " + week;
+    }
+    else {
+      out.innerHTML = "Class Over!"
+    }
+  }
+
   function battleStart(){
     // var out = document.getElementById("knowledge");
     // out.innerHTML = knowledge;
@@ -259,18 +274,65 @@ function setGrade(mark){
     // profTurn();
     display_info();
   }
+
+  function open_help_modal() {
+    var modal = document.getElementById('modal');
+    modal.style.display = "block";
+  }
+
+  function close_help_modal() {
+    var modal = document.getElementById('modal');
+    modal.style.display = "none";
+  }
 </script>
 <!--End of Javascript-->
-
-
-
-
 
 <body onload="battleStart()">
 <div class="main">
   <% if flash[:notice] %>
 		<div class="notice"><%= flash[:notice] %></div>
   <% end %>
+
+  <button id="open_help" onclick="open_help_modal()">?</button>
+
+  <div id="modal" class="modal_background">
+    <div class="help_modal">
+      <span id="close" onclick="close_help_modal()">×</span>
+      <h2>Class has started! It's you against the Profimon!</h2>
+      <p>
+        The course will last 10 weeks. You start the course with a grade of 80%.
+        For each week, pick one of six skills to use against the Profimon.
+        The Profimon will counter with his/her own skill, and your current grade will change
+        as a result of how well your skill matched up against the Profimon's skill.
+      </p>
+      <p>
+        The catch is that you don't know what the Profimon will do in each week before you
+        select your skill for that week. However, you don't want to be sleeping in during
+        the midterm or skipping class when there's a pop quiz!
+      </p>
+      <h2>The Skills</h2>
+      <p>Hover over a skill button to see the attributes for that skill.</p>
+      <ul>
+        <li>
+          <span style="font-weight: bold; color: #963;">Knowledge:</span>
+          This is the knowledge component of the skill. Knowledge is most important when you have pop quizzes, exams, etc.
+        </li>
+        <li>
+          <span style="font-weight: bold; color: #963;">Homework:</span>
+          This is the homework component of the skill. Homework is most important when the Profimon gives out assignments or projects.
+        </li>
+        <li>
+          <span style="font-weight: bold; color: #963;">Stamina:</span>
+          This is the amount of stamina that the skill uses. A negative amount means that you will gain stamina by using this skill.
+        </li>
+      </ul>
+      <h2>The Midterm</h2>
+      <p>The midterm will happen sometime between Week 4 to Week 7 (inclusive). Make sure you study for it!
+      <h2>The Final</h2>
+      <p>The final will happen in Week 10. You really want to study for this!</p>
+    </div>
+  </div>
+
   <h1 id = "classStatus"><%= @subject %> <%= @course_number %> in session!</h1>
   <div class="class_info">
     <p>Instructor: <%= @instructor_name %></p>
@@ -328,7 +390,7 @@ function setGrade(mark){
   <p id = "current_grade" style="text-align: center; font-size: 1.5em; color: #283;"></p>
   <!-- this is where the battle "happens", change it when possible-->
   <p id = "log" style="text-align: center; font-size: 1.3em; font-weight: bold;"></p>
-  <p id = "log2">Course Difficulty (1.x = low, 2.x = medium, 3.x = high): <%= @course_difficulty %></p>
+  <!-- <p id = "log2">Course Difficulty (1.x = low, 2.x = medium, 3.x = high): <%= @course_difficulty %></p>-->
   <!-- <p id = "log2"></p>-->
   <!-- <p id = "log3"></p>-->
   <!-- <p id = "info">STATS:<br/>-->

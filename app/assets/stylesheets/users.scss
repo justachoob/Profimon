@@ -77,6 +77,17 @@ p.sign_up {
   text-decoration: none;
 }
 
+.profile_form_button_inline {
+  font-size: 1em;
+  background-color: #A23;
+  color: white;
+  margin: 10px 5px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0;
+  text-decoration: none;
+}
+
 .profile_form_button_small {
   font-size: 1em;
   display: block;
@@ -84,6 +95,17 @@ p.sign_up {
   color: white;
   margin-top: 10px;
   padding: 5px;
+  border-radius: 5px;
+  border: 0;
+  text-decoration: none;
+}
+
+.profile_form_button_small_inline {
+  font-size: 1em;
+  background-color: #864;
+  color: white;
+  margin: 10px 5px;
+  padding: 5px 50px;
   border-radius: 5px;
   border: 0;
   text-decoration: none;
