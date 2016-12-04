@@ -21,33 +21,33 @@ class ApplicationController < ActionController::Base
 
   #Helper to make sure you only access your own class selection page
   def confirm_own_classes_page
-  #  	unless (params[:profile].to_i == session[:user_id])
-  #  		flash[:notice] = "You cannot take courses on behalf of other users!"
-  #  		redirect_to(user_path( :id => session[:user_id]))
-  # 	end
+    if (Profile.find(params[:profile].to_i).user_id != session[:user_id])
+      flash[:notice] = "You cannot take courses for other users!"
+      redirect_to(user_path( :id => session[:user_id]))
+    end
   end
 
   def confirm_own_class_finish
-  #  	if (course_params[:profile_id].to_i != session[:user_id])
-  #  		flash[:notice] = course_params[:profile_id].to_i
-  #  		redirect_to(user_path( :id => session[:user_id]))
-  # 	end
+    	if (Profile.find(course_params[:profile_id].to_i).user_id != session[:user_id])
+    		flash[:notice] = course_params[:profile_id].to_i
+    		redirect_to(user_path( :id => session[:user_id]))
+    	end
   end
 
 
   #Helper to make sure you only access your own battle stuff
   def confirm_enrollment
-  # 	if ((params[:profile][:id].to_i != session[:user_id]))
-  #  	  flash[:notice] = "You cannot enroll on behalf of other users!"
-  # 	  redirect_to(user_path( :id => session[:user_id]))
-  # 	end
+   	if (Profile.find(params[:profile][:id].to_i).user_id != session[:user_id])
+    	  flash[:notice] = "You cannot enroll on behalf of other users!"
+   	  redirect_to(user_path( :id => session[:user_id]))
+   	end
   end
 
   def confirm_battle
-  #  	if ((params[:current_profile_id].to_i != session[:user_id]))
-  #  	  flash[:notice] = "You cannot battle on behalf of other users!"
-  # 	  redirect_to(user_path( :id => session[:user_id]))
-  # 	end
+    	if (Profile.find(params[:current_profile_id].to_i).user_id != session[:user_id])
+    	  flash[:notice] = "You cannot battle on behalf of other users!"
+   	  redirect_to(user_path( :id => session[:user_id]))
+   	end
   end
 
   #Helper to confirm is user is an admin
