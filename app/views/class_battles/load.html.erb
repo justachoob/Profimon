@@ -362,12 +362,24 @@ function setGrade(mark){
           <!--All buttons should go to the same onclick method-->
           <!--Each button passes different values as parameters depending on the skill's stats-->
           <div style="margin-left: 20px;">
-            <button type="button" id="skill_button1" class="skill_button" onclick = "playerMove('Study', 100, 25, 60)">Study</button>
-            <button type="button" id="skill_button2" class="skill_button" onclick = "playerMove('Do Homework', 45, 100, 70)">Do Homework</button>
-            <button type="button" id="skill_button3" class="skill_button" onclick = "playerMove('Sleep In', 0, 0, -90)">Sleep In</button>
-            <button type="button" id="skill_button4" class="skill_button" onclick = "playerMove('<%= @user_skill1.name %>', <%= @user_skill1.knowledge %>, <%= @user_skill1.homework %>, <%= @user_skill1.stamina %>)"><%= @user_skill1.name %></button>
-            <button type="button" id="skill_button5" class="skill_button" onclick = "playerMove('<%= @user_skill2.name %>', <%= @user_skill2.knowledge %>, <%= @user_skill2.homework %>, <%= @user_skill2.stamina %>)"><%= @user_skill2.name %></button>
-            <button type="button" id="skill_button6" class="skill_button" onclick = "playerMove('<%= @user_skill3.name %>', <%= @user_skill3.knowledge %>, <%= @user_skill3.homework %>, <%= @user_skill3.stamina %>)"><%= @user_skill3.name %></button>
+            <button type="button" id="skill_button1" class="skill_button" data-tooltip="Knowledge: 100 Homework: 25 Stamina: 60" onclick = "playerMove('Study', 100, 25, 60)">
+              Study
+            </button>
+            <button type="button" id="skill_button2" class="skill_button" data-tooltip="Knowledge: 45 Homework: 100 Stamina: 70" onclick = "playerMove('Do Homework', 45, 100, 70)">
+              Do Homework
+            </button>
+            <button type="button" id="skill_button3" class="skill_button" data-tooltip="Knowledge: 0 Homework: 0 Stamina: -90" onclick = "playerMove('Sleep In', 0, 0, -90)">
+              Sleep In
+            </button>
+            <button type="button" id="skill_button4" class="skill_button" data-tooltip="Knowledge: <%= @user_skill1.knowledge %> Homework: <%= @user_skill1.homework %> Stamina: <%= @user_skill1.stamina %>" onclick = "playerMove('<%= @user_skill1.name %>', <%= @user_skill1.knowledge %>, <%= @user_skill1.homework %>, <%= @user_skill1.stamina %>)">
+              <%= @user_skill1.name %>
+            </button>
+            <button type="button" id="skill_button5" class="skill_button" data-tooltip="Knowledge: <%= @user_skill2.knowledge %> Homework: <%= @user_skill2.homework %> Stamina: <%= @user_skill2.stamina %>" onclick = "playerMove('<%= @user_skill2.name %>', <%= @user_skill2.knowledge %>, <%= @user_skill2.homework %>, <%= @user_skill2.stamina %>)">
+              <%= @user_skill2.name %>
+            </button>
+            <button type="button" id="skill_button6" class="skill_button" data-tooltip="Knowledge: <%= @user_skill3.knowledge %> Homework: <%= @user_skill3.homework %> Stamina: <%= @user_skill3.stamina %>" onclick = "playerMove('<%= @user_skill3.name %>', <%= @user_skill3.knowledge %>, <%= @user_skill3.homework %>, <%= @user_skill3.stamina %>)">
+              <%= @user_skill3.name %>
+            </button>
           </div>
         </div>
         <div style="float: right; height: 70px; width: 200px">
