@@ -1,7 +1,29 @@
+
+<script>
+	function open_help_modal() {
+		var modal = document.getElementById('modal');
+		modal.style.display = "block";
+	}
+
+	function close_help_modal() {
+		var modal = document.getElementById('modal');
+		modal.style.display = "none";
+	}
+</script>
+
 <div class="main">
 <% if flash[:notice] %>
 		<div class="notice"><%= flash[:notice] %></div>
 <% end %>
+
+<button id="open_help" onclick="open_help_modal()">?</button>
+
+<div id="modal" class="modal_background">
+  <div class="help_modal">
+    <span id="close" onclick="close_help_modal()">×</span>
+    <p>Some text in the Modal..</p>
+  </div>
+</div>
 
 <h1> Welcome, <%= @user.name %>! </h1>
 
