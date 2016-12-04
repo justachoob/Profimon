@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   
   before_action :confirm_logged_in
-  before_action :confirm_enrollment
+  #before_action :confirm_enrollment
   before_action :confirm_own_class_finish, only: [:create]
   
 	def show
