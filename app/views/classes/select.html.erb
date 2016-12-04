@@ -54,6 +54,9 @@
 </script>
 
 <div class="main">
+  <% if flash[:notice] %>
+		<div class="notice"><%= flash[:notice] %></div>
+  <% end %>
   <h1>Select a course for <%= @current_profile.pname %>!</h1>
   <%= form_tag({ :action => 'enroll' }) do %>
     <%= label_tag(:subject, "Subject:") %>

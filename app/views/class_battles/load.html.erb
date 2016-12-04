@@ -268,6 +268,9 @@ function setGrade(mark){
 
 <body onload="battleStart()">
 <div class="main">
+  <% if flash[:notice] %>
+		<div class="notice"><%= flash[:notice] %></div>
+  <% end %>
   <h1 id = "classStatus"><%= @subject %> <%= @course_number %> in session!</h1>
   <div class="class_info">
     <p>Instructor: <%= @instructor_name %></p>

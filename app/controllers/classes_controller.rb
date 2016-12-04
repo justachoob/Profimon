@@ -1,6 +1,9 @@
 class ClassesController < ApplicationController
 
   before_action :confirm_logged_in
+  before_action :confirm_own_classes_page, only: [:select]
+  before_action :confirm_enrollment, only: [:enroll]
+  
 
   def select
     @current_profile = Profile.find(params[:profile])
