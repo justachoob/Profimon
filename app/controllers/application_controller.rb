@@ -28,8 +28,11 @@ class ApplicationController < ActionController::Base
   end
 
   def confirm_own_class_finish
-    	if (Profile.find(course_params[:profile_id].to_i).user_id != session[:user_id])
-    		flash[:notice] = course_params[:profile_id].to_i
+      if (Profile.find(course_params[:profile_id].to_i).year < ((params[:course][:course_number].to_i)/100).to_i)
+        flash[:notice] = "You are not at an appropriate course level to take that course"
+    	  redirect_to(user_path( :id => session[:user_id]))
+    	elsif (Profile.find(course_params[:profile_id].to_i).user_id != session[:user_id])
+    		flash[:notice] = "You cannot take courses for other users!"
     		redirect_to(user_path( :id => session[:user_id]))
     	end
   end

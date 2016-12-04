@@ -32,13 +32,13 @@ class CoursesController < ApplicationController
       end
       #if badge found and it has the course in it
       if (@courseFound==true)
-        updateCourse(@course, course_params[:grade])
+        updateCourse(@course, course_params[:grade], @profile)
       #if badge found but not the course, add the course to it
       else
         @course = Course.new(course_params)
         @course.badge_id = @badge.id
         @course.save
-        updateCourse(@course, @course.grade)
+        updateCourse(@course, @course.grade, @profile)
       end
     #but if there was no badge (and by extension no course either)
     #make both
@@ -48,14 +48,15 @@ class CoursesController < ApplicationController
       @course = Course.new(course_params)
       @course.save
       @course.badge_id = @badge.id
-      updateCourse(@course, @course.grade)
+      updateCourse(@course, @course.grade, @profile)
     end
   
     @course.save
+    @profile.save
     redirect_to root_url, notice: "The course has been added to your progress"
   end
   
-  def updateCourse(target, grade)
+  def updateCourse(target, grade, profile)
     
     if ((target.status==0)&&(target.timesTaken<3))#if there's reason to potentially update
     target.grade = grade
@@ -66,6 +67,22 @@ class CoursesController < ApplicationController
     end
     #increment times taken
     target.timesTaken = target.timesTaken+1
+
+    #increment year progess if not already graduated
+    if (!profile.graduated)
+      if ((target.course_number/100).to_i == profile.year.to_i)
+        profile.yearProgress = profile.yearProgress + 1
+        if (profile.yearProgress == 5)
+          profile.yearProgress = 0
+          if (profile.year<4)
+            profile.year = profile.year + 1
+          else 
+            profile.graduated = true
+          end
+        end
+      end
+    end
+    
     
   end
   
