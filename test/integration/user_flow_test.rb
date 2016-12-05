@@ -75,4 +75,38 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     get profile_url(@profile)
     assert_response :success
   end
+  
+  test "should reach about page" do
+    log_in_as(users(:one))
+    get "/about"
+    assert_response :success
+    
+    assert_select "h2", "Your Mission"
+    assert_select "h3", "Credits"
+  end
+  
+  test "should have modal button" do
+    log_in_as(users(:one))
+    get "/users/1"
+    assert_response :success
+    
+    assert_select "button", "?"
+    assert_select "h2", "Welcome to your profile page!"
+    
+  end
+  
+    
+  test "should show badges page content" do
+    log_in_as(users(:one))
+    get "/users/1"
+    assert_response :success
+    
+    get "/profiles/1"
+    assert_response :success
+    
+    get "/badges/1?current_profile_id=1", params: { current_profile_id: 1, id: 1}
+    assert_response :success
+    
+    assert_select "p", "All badges for this profile are:"
+  end
 end

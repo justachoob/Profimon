@@ -37,7 +37,6 @@ class BadgesControllerTest < ActionDispatch::IntegrationTest
   end
   
 
-  #someone needs to look into these!!
   test "create should require logged-in user for badges" do
     assert_no_difference('Badge.count') do
       post badges_path, params: { current_profile_id: 1, id: 1, course: {profile_id: 1, subject: "CMPT" } }
@@ -53,4 +52,6 @@ class BadgesControllerTest < ActionDispatch::IntegrationTest
       
     assert_redirected_to login_url
   end
+  
+  
 end
