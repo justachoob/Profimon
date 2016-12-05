@@ -13,8 +13,9 @@
     <div class="navbar-class">
       <span style="color: white; font-size: 1.5em; text-decoration: none">PROFIMON</span>
       <div class="navbar-class-right">
+      <%= link_to 'ABOUT' , about_path %>
        <% if session[:user_id] != nil %>
-          <%= link_to 'ABOUT' , session_about_path %>
+          
           <% if session[:admin] == true %>
             <%= link_to 'ADMIN SETTINGS' , admin_path %>
           <% end %>
