@@ -23,7 +23,11 @@ class ApplicationController < ActionController::Base
   def confirm_own_classes_page
     if (Profile.find(params[:profile].to_i).user_id != session[:user_id])
       flash[:notice] = "You cannot take courses for other users!"
-      redirect_to(user_path( :id => session[:user_id]))
+      if session[:admin]
+        redirect_to admin_path
+      else
+        redirect_to(user_path( :id => session[:user_id]))
+      end
     end
   end
 
@@ -42,8 +46,9 @@ class ApplicationController < ActionController::Base
   def confirm_enrollment
    	if (Profile.find(params[:profile][:id].to_i).user_id != session[:user_id])
     	  flash[:notice] = "You cannot enroll on behalf of other users!"
-   	  redirect_to(user_path( :id => session[:user_id]))
-   	end
+   	    redirect_to(user_path( :id => session[:user_id]))
+
+    end
   end
 
   def confirm_battle
