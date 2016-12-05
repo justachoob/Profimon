@@ -7,13 +7,9 @@
 
 <%= image_tag @profile.avatar.url(:medium), :size => "200x200" %>
 
-<p>
-  <strong>Faculty:</strong>
-  <%= @profile.faculty %>
-</p>
+<p><%= @profile.faculty %></p>
 
 <p>
-
   <%if @profile.current_gpa == 0.0 && @profile.courses.length == 0%>
     <strong>Current GPA:</strong> N/A
   <% else %>
@@ -21,40 +17,46 @@
     <%= @profile.current_gpa.round(2) %>
   <%end%>
 </p>
-<p>
-  <strong>Graduated:</strong>
-  <%= @profile.graduated %>
-</p>
 
 <p>
-  <strong>Year level:</strong>
+  <strong>Year:</strong>
   <%= @profile.year %>
-</p>
-<p>
-  <strong>Year progress:</strong>
-  <%= @profile.yearProgress %>/5
-</p>
-
-<p>
-  <strong>Number of courses taken:</strong>
-  <%= @profile.courses.length %>
-</p>
-
-<p>
-  <strong>Courses taken:</strong>
-  <!--<%= @profile.courses_taken %>-->
-  <%= link_to 'Show all courses taken', course_path( :current_profile_id => @profile.id) %>
-</p>
-
-<p>
-  <strong>Badges:</strong>
-  <%= link_to 'Show all badges', badge_path( :current_profile_id => @profile.id) %>
+  <meter value="<%= @profile.yearProgress %>" min="0" max="5" style="margin-left: 10px;"></meter>
 </p>
 
 <p>
   <strong>User:</strong>
   <%= link_to @profile.user.name, @profile.user %>
 </p>
+
+<br>
+
+<p>
+  <strong>Current Badges:</strong>
+</p>
+
+<% @profile.badges.each do |b| %>
+ <p>
+   <%= b.subject %><meter value="<%= b.progress %>" min="0" max="15" style="margin-left: 10px;"></meter>
+   <% if b.progress >= 15 %>
+      <span>(completed)</span>
+   <% end %>
+ </p>
+<% end %>
+
+<% if @profile.badges.count == 0 %>
+  <p>None</p>
+<% end %>
+
+<br>
+
+<p>
+  <%= link_to 'Show All Courses Taken', course_path( :current_profile_id => @profile.id), class: "profile_form_button_blue" %>
+  <span style="padding: 0 10px;"> </span>
+  <%= link_to 'Show Badge Progress/Details', badge_path( :current_profile_id => @profile.id), class: "profile_form_button_blue" %>
+</p>
+
+<br>
 
 </div>
 
