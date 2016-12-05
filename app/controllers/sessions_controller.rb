@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  
+
   #Empty action with html for login
   def new
     if session[:user_id]
@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  #Login action 
+  #Login action
   def create
   	if params[:session][:name].present? && params[:session][:password].present?
   		user = User.find_by(name: params[:session][:name])
@@ -41,6 +41,9 @@ class SessionsController < ApplicationController
     session[:admin] = nil
     flash[:notice] = "You are now logged out."
     redirect_to login_path
+  end
+
+  def about
   end
 
 
