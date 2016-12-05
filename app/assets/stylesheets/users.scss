@@ -60,7 +60,7 @@ p.sign_up {
   padding: 30px 0 25px 0;
 }
 
-#table_of_profiles .profile_name_link{
+#table_of_profiles .profile_name_link {
   color: #499;
   font-size: 1.2em;
   font-weight: bold;
@@ -121,25 +121,25 @@ p.sign_up {
   text-decoration: none;
 }
 
-#table_of_users, #table_of_skills {
+#table_of_users, #table_of_skills, #table_of_courses, #table_of_badges {
   border-collapse: collapse;
 }
 
-#table_of_users td, #table_of_users th, #table_of_skills td, #table_of_skills th {
+#table_of_users td, #table_of_users th, #table_of_skills td, #table_of_skills th, #table_of_courses td, #table_of_courses th, #table_of_badges td, #table_of_badges th {
   vertical-align: top;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-#table_of_users tr, #table_of_skills tr {
+#table_of_users tr, #table_of_skills tr, #table_of_courses tr, #table_of_badges tr {
   border: solid;
   border-width: 1px 0;
 }
 
-#table_of_users tr:first-child, #table_of_skills tr:first-child {
+#table_of_users tr:first-child, #table_of_skills tr:first-child, #table_of_courses tr:first-child, #table_of_badges tr:first-child {
   border-top: none;
 }
 
-#table_of_users tr:last-child, #table_of_skills tr:last-child {
+#table_of_users tr:last-child, #table_of_skills tr:last-child, #table_of_courses tr:last-child, #table_of_badges tr:last-child {
   border-bottom: none;
 }

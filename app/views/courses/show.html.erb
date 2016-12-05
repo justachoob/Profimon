@@ -1,25 +1,26 @@
 <div class="main">
 <p id="notice"><%= notice %></p>
-  <p> All courses taken are: </p>
-  <% @profile.courses.each do |c| %>
-    <p>
-      <strong>Course subject:</strong>
-      <%= c.subject %>
-    </p>
-    <p>
-      <strong>Course number:</strong>
-      <%= c.course_number %>
-    </p>
-    <p>
-      <strong>Grade earned:</strong>
-      <%= c.grade %>
-    </p>
-    <p>
-      <strong>Profimon name:</strong>
-      <%= c.profimon_name %>
-    </p>
-    <%= link_to 'Delete', c, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <%end%>
+  <h1> <%= @profile.pname %>'s Coursework </h1>
 
+  <table id="table_of_courses" style="text-align: center; margin: 10px auto;">
+    <tr>
+      <th width="175px">Course</th>
+      <th width="175px"># of Times Taken</th>
+      <th width="250px">Profimon Name</th>
+      <th width="175px">Grade Earned</th>
+    </tr>
 
+    <% @profile.courses.order(:subject).order(:course_number).each do |c| %>
+      <tr>
+        <td><%= c.subject %> <%= c.course_number %></td>
+        <td><%= c.timesTaken %></td>
+        <td><%= c.profimon_name %></td>
+        <td><%= c.grade %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <p style="text-align: center; margin-top: 30px;">
+    <%= link_to 'Back', profile_path(:id => @profile.id), class: "profile_form_button" %>
+  </p>
 </div>

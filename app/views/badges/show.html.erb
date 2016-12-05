@@ -1,32 +1,42 @@
 <div class="main">
 <p id="notice"><%= notice %></p>
 
-  <p> All badges for this profile are: </p>
-  <% @profile.badges.each do |b| %>
-    <p>
-      <strong>Course subject:</strong>
-      <%= b.subject %>
-    </p>
-    <p>
-      <strong>Completed:</strong>
-      <%= b.completed %>
-    </p>
-        <p>
-      <strong>Progress:</strong>
-      <%= b.progress %>/15
-    </p>
-    <p>
-      <strong>Courses taken for this badge:</strong>
-      <% b.courses.each do |c| %>
-        <br/>
-        <%= c.subject %> <%= c.course_number %> <br/>
-        Status: <%= c.status %> <br/>
-        Grade: <%= c.grade %> <br/>
-        Times taken: <%= c.timesTaken %><br/>
-      <%end%>
-    </p>
-    <!-- link_to 'Delete', b, method: :delete, data: { confirm: 'Are you sure?' } -->
-  <%end%>
+  <h1> <%= @profile.pname %>'s Badges </h1>
 
+  <table id="table_of_badges" style="text-align: center; margin: 10px auto;">
+    <tr>
+      <th width="150px">Subject</th>
+      <th width="150px">Progress</th>
+      <th width="400px">Courses Taken for This Badge</th>
+    </tr>
 
+    <% @profile.badges.order('progress DESC').each do |b| %>
+      <tr>
+        <td><div class="badge_box"><div class="badge_subject"><%= b.subject %></div></div></td>
+        <td>
+          <% if b.progress >= 15 %>
+            Completed!
+          <% else %>
+            <meter value="<%= b.progress %>" min="0" max="15"></meter><br>
+            <span style="font-size: 0.8em;"><%= b.progress%>/15</span>
+          <% end %>
+        </td>
+        <td>
+          <% b.courses.each do |c| %>
+            <span style="font-weight: bold; color: #499;"><%= c.subject %> <%= c.course_number %></span> -
+            <% if c.status == 1 %>
+              Passed
+            <% else %>
+              Failed
+            <% end %>
+            (Grade: <%= c.grade %>) <br/>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <p style="text-align: center; margin-top: 30px;">
+    <%= link_to 'Back', profile_path(:id => @profile.id), class: "profile_form_button" %>
+  </p>
 </div>
