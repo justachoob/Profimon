@@ -152,6 +152,8 @@ function setGrade(mark){
     var pstamina = document.getElementById("profimon_stamina");
     profimon_stamina -= 20;   // Need to update this later to reflect the stamina required for the move
     pstamina.setAttribute("value", String(profimon_stamina));
+    var profimon_stamina_text = document.getElementById("profimon_stamina_text");
+    profimon_stamina_text.innerHTML = String(profimon_stamina) + "/200";
     var temp_knowledge = current_knowledge + knowledge - move_knowledge;
     if (temp_knowledge > 5)
       temp_knowledge = 5;
@@ -253,6 +255,8 @@ function setGrade(mark){
     // out.innerHTML = midtermWeek;
     var bar = document.getElementById("player_stamina");
     bar.setAttribute("value", String(stamina));
+    var player_stamina_text = document.getElementById("player_stamina_text");
+    player_stamina_text.innerHTML = String(stamina) + "/200";
   }
 
   function displayWeek() {
@@ -344,9 +348,8 @@ function setGrade(mark){
     <tr>
       <td style="text-align: center;">
         <%= image_tag @current_profile.avatar.url(:medium), :size => "200x200" %>
-        <!-- This is the player's stamina bar -->
-        <!-- Change the value of the meter using Javascript-->
         <meter value="200" min="0" max="200" id="player_stamina"></meter>
+        <p class="meter_indicator" id="player_stamina_text">200/200</p>
 
         <p><%= @current_profile.pname %></p>
         <p>GPA: <%= @current_profile.current_gpa.round(2) %></p>
@@ -400,7 +403,7 @@ function setGrade(mark){
 
         <!-- This is the profimon's stamina bar-->
         <meter value="200" min="0" max="200" id="profimon_stamina"></meter>
-        <p class="meter_indicator">200/200</p>
+        <p class="meter_indicator" id="profimon_stamina_text">200/200</p>
         <p><%= @instructor_name %></p>
       </td>
     </tr>
