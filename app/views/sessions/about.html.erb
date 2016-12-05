@@ -1,1 +1,70 @@
-<p> say hello </p>
+<div class="main">
+  <h2>Your Mission</h2>
+  <p>
+    Your mission is to make your characters graduate from SFU with the highest GPA possible.
+    Each character will take courses and battle the Profimons in those courses to obtain a grade for each course.
+    Characters graduate once they have completed Year 4 and have earned at least 2 badges.
+  </p>
+  <h2>Badges</h2>
+  <p>
+    You earn a badge for a subject once you have earned 15 points from taking courses in that subject.
+    Points for courses are awarded as follows:
+  </p>
+  <ul>
+    <li>1st year course (100-level): 1 point</li>
+    <li>2nd year course (200-level): 2 points</li>
+    <li>3rd year course (300-level): 3 points</li>
+    <li>4th year course (400-level): 4 points</li>
+  </ul>
+  <h2>Getting Started</h2>
+  <p>To start, click <span class="profile_form_button_small_inline">Enroll</span> to enroll a character in a course.</p>
+  <p>Don't have a character yet? Click <span class="profile_form_button_inline">New Character</span> to create one!</p>
+
+  <h2>Select a course for your character!</h2>
+  <p>Use the drop-down menus to select a course for your character.</p>
+  <p>Note:</p>
+  <ul>
+    <li>1st year students only have access to 1st year courses</li>
+    <li>2nd year students only have access to 1st and 2nd year courses</li>
+    <li>3rd year students only have access to 1st, 2nd, and 3rd year courses</li>
+    <li>4th year students only have access to 1st, 2nd, 3rd, and 4th year courses</li>
+  </ul>
+
+  <h2>Battle System</h2>
+  <p>
+  The course will last 10 weeks. You start the course with a grade of 80%.
+  For each week, pick one of six skills to use against the Profimon.
+  The Profimon will counter with his/her own skill, and your current grade will change
+  as a result of how well your skill matched up against the Profimon's skill.
+  </p>
+  <p>
+  The catch is that you don't know what the Profimon will do in each week before you
+  select your skill for that week. However, you don't want to be sleeping in during
+  the midterm or skipping class when there's a pop quiz!
+  </p>
+  <h2>The Skills</h2>
+  <p>Hover over a skill button to see the attributes for that skill.</p>
+  <ul>
+    <li>
+      <span style="font-weight: bold; color: #963;">Knowledge:</span>
+      This is the knowledge component of the skill. Knowledge is most important when you have pop quizzes, exams, etc.
+    </li>
+    <li>
+      <span style="font-weight: bold; color: #963;">Homework:</span>
+      This is the homework component of the skill. Homework is most important when the Profimon gives out assignments or projects.
+    </li>
+    <li>
+      <span style="font-weight: bold; color: #963;">Stamina:</span>
+      This is the amount of stamina that the skill uses. A negative amount means that you will gain stamina by using this skill.
+    </li>
+  </ul>
+  <h2>The Midterm</h2>
+  <p>The midterm will happen sometime between Week 4 to Week 7 (inclusive). Make sure you study for it!
+    <h2>The Final</h2>
+    <p>The final will happen in Week 10. You really want to study for this!</p>
+  <h3>Credits</h3>
+    <p>Profimon's avatars: Eternal Legend</p>
+    <br><br>
+    <%= link_to 'Back', :back, class: "profile_form_button" %>
+
+</div>
