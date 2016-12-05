@@ -15,7 +15,7 @@ class CoursesFlowTest < ActionDispatch::IntegrationTest
     get course_url( "current_profile_id" => 1)
     assert_response :success
     
-    assert_select "p", "All courses taken are:"
+    assert_select "h1", "testuser1's Coursework"
   end
   
   test "should load into battle of CMPT 102" do
@@ -74,7 +74,7 @@ class CoursesFlowTest < ActionDispatch::IntegrationTest
     get "/courses/1?current_profile_id=1", params: {"current_profile_id"=>"1", "id"=>"1"}
     assert_response :success
     
-    assert_select "p", "All courses taken are:"
+    assert_select "h1", "testuser1's Coursework"
   end
   
 end

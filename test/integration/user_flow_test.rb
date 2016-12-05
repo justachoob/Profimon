@@ -137,6 +137,6 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     get "/badges/1?current_profile_id=1", params: { current_profile_id: 1, id: 1}
     assert_response :success
     
-    assert_select "p", "All badges for this profile are:"
+    assert_select "h1", "testuser1's Badges"
   end
 end
