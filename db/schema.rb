@@ -41,16 +41,6 @@ ActiveRecord::Schema.define(version: 20161204221613) do
     t.integer  "badge_id"
   end
 
-  create_table "courses_takens", force: :cascade do |t|
-    t.string   "profile_id"
-    t.float    "grade_earned"
-    t.string   "course_subject"
-    t.integer  "course_number"
-    t.string   "profimon_name"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
   create_table "profiles", force: :cascade do |t|
     t.string   "pname"
     t.string   "faculty"
@@ -60,6 +50,7 @@ ActiveRecord::Schema.define(version: 20161204221613) do
     t.string   "badges"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "UserId"
     t.integer  "user_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -98,14 +89,6 @@ ActiveRecord::Schema.define(version: 20161204221613) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.boolean  "admin",           default: false
-  end
-
-  create_table "widgets", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "stock"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end
