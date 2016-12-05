@@ -63,11 +63,12 @@
 					<%= link_to p.pname, p, :class => "profile_name_link" %><br>
 
 					<%= p.faculty %><br>
+					<span style="color: #749;">Year: <%= p.year %></span><br>
 					<%if p.current_gpa == 0.0 && p.courses.length ==0 %>
-				     GPA: N/A
+				     <span style="color: #749;">GPA: N/A</span>
 				  <% else %>
-				     GPA:
-				    <%= p.current_gpa.round(2) %>
+				     <span style="color: #749;">GPA:
+				    <%= p.current_gpa.round(2) %></span>
 				  <%end%><br>
 					<!--<%= link_to 'Enroll', classes_select_path(:current_profile => {:id => p.id, :pname => p.pname}), class: "profile_form_button_small" %>-->
 					<%= link_to 'Enroll', {:controller => "classes", :action => "select", :profile => p.id }, class: "profile_form_button_small" %>
