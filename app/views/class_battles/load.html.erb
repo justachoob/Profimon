@@ -293,6 +293,25 @@ function setGrade(mark){
     var modal = document.getElementById('modal');
     modal.style.display = "none";
   }
+
+  $(document).ready(function() {
+    var audio = $("#mysoundclip")[0];
+    console.log(audio);
+    audio.play();
+  })
+
+  function toggle_sound() {
+    var audio = document.getElementById("mysoundclip");
+    var audio_button = document.getElementById("toggle_sound");
+    if (audio_button.innerHTML == "\uD83D\uDD0A") {
+      audio_button.innerHTML = "\uD83D\uDD07";
+      audio.pause();
+    }
+    else {
+      audio_button.innerHTML = "\uD83D\uDD0A";
+      audio.play();
+    }
+  }
 </script>
 <!--End of Javascript-->
 
@@ -302,7 +321,13 @@ function setGrade(mark){
 		<div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
+  <audio id="mysoundclip" preload="auto">
+    <source src="/Baroque_Coffee_House.mp3"></source>
+  </audio>
+
   <button id="open_help" onclick="open_help_modal()">?</button>
+
+  <button id="toggle_sound" onclick="toggle_sound()">&#x1f50a;</button><br>
 
   <div id="modal" class="modal_background">
     <div class="help_modal">

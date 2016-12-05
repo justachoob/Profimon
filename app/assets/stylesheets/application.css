@@ -143,6 +143,19 @@ h4.subtitle {
   float: right;
 }
 
+#toggle_sound {
+  font-family: 'Arvo';
+  font-size: 2em;
+  margin-top: -5px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 5px;
+  border: 0;
+  float: right;
+}
+
 .modal_background {
   display: none;
   position: fixed;
