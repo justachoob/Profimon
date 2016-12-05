@@ -22,7 +22,7 @@
           <% end %>
         </td>
         <td>
-          <% b.courses.order(:progress).each do |c| %>
+          <% b.courses.order(:course_number).each do |c| %>
             <span style="font-weight: bold; color: #499;"><%= c.subject %> <%= c.course_number %></span> -
             <% if c.status == 1 %>
               Passed
