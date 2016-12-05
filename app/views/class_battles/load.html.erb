@@ -349,7 +349,7 @@ function setGrade(mark){
         <meter value="200" min="0" max="200" id="player_stamina"></meter>
 
         <p><%= @current_profile.pname %></p>
-        <p>GPA: <%= @current_profile.current_gpa %></p>
+        <p>GPA: <%= @current_profile.current_gpa.round(2) %></p>
       </td>
       <td>
         <div style="float: left;">
@@ -431,12 +431,12 @@ function setGrade(mark){
 
   </div>
 
-<button type="button" id="gradeButton" class="skill_button" onclick = "setGrade(1)">Set grades to A</button>
-<button type="button" id="gradeButton" class="skill_button" onclick = "setGrade(2)">Set grades to B</button>
-<button type="button" id="gradeButton" class="skill_button" onclick = "setGrade(3)">Set grades to F</button>
+<!--<button type="button" id="gradeButton" class="skill_button" onclick = "setGrade(1)">Set grades to A</button>-->
+<!--<button type="button" id="gradeButton" class="skill_button" onclick = "setGrade(2)">Set grades to B</button>-->
+<!--<button type="button" id="gradeButton" class="skill_button" onclick = "setGrade(3)">Set grades to F</button>-->
 
 </div>
 </body>
 
 
-<%= debug(params) %>
+<!-- debug(params) -->
