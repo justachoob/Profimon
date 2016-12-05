@@ -35,7 +35,7 @@
   <strong>Current Badges:</strong>
 </p>
 
-<% @profile.badges.each do |b| %>
+<% @profile.badges.order('progress DESC').each do |b| %>
  <p>
    <%= b.subject %><meter value="<%= b.progress %>" min="0" max="15" style="margin-left: 10px;"></meter>
    <% if b.progress >= 15 %>

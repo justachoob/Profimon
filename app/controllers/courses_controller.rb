@@ -1,16 +1,16 @@
 class CoursesController < ApplicationController
-  
+
   before_action :confirm_logged_in
   #before_action :confirm_enrollment
   before_action :confirm_own_class_finish, only: [:create]
-  
+
 	def show
     @profile = Profile.find(params[:current_profile_id])
   end
 
 
   def create
-   
+
     change_types
     @profile = Profile.find(course_params[:profile_id])
     @badgeFound = false
@@ -50,21 +50,22 @@ class CoursesController < ApplicationController
       @course.badge_id = @badge.id
       updateCourse(@course, @course.grade, @profile)
     end
-  
+
     @course.save
     @profile.save
     redirect_to root_url, notice: "The course has been added to your progress"
   end
-  
+
   def updateCourse(target, grade, profile)
-    
+
     if ((target.status==0)&&(target.timesTaken<3))#if there's reason to potentially update
-    target.grade = grade
-      if (grade.to_f>1)
+      target.grade = grade
+      if (grade.to_f>=2)
         target.status=1
         BadgesController.updateProgress(target.badge_id, target.course_number)
       end
     end
+    
     #increment times taken
     target.timesTaken = target.timesTaken+1
 
@@ -76,17 +77,17 @@ class CoursesController < ApplicationController
           profile.yearProgress = 0
           if (profile.year<4)
             profile.year = profile.year + 1
-          else 
+          else
             profile.graduated = true
           end
         end
       end
     end
-    
-    
+
+
   end
-  
-  
+
+
   def destroy
     @course = Course.find(params[:id])
     @profileID = @course.profile_id

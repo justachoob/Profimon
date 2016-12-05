@@ -96,6 +96,44 @@
     </select>
     <br><br>
     <%= hidden_field(:profile, :id, value: @current_profile.id) %>
+    <%= link_to 'Back', user_path( :id => session[:user_id]), class: "profile_form_button_inline", style: "margin-top: 10px; margin-bottom: 10px;" %>
     <%= submit_tag "Enroll", id: "enroll_button", class: "form_button", disabled: true %>
+    <br><br>
+    <hr>
+
+    <h3> <%= @current_profile.pname %>'s Past Courses</h3>
+
+    <table id="table_of_badges" style="text-align: center; margin: 10px auto;">
+      <tr>
+        <th width="150px">Subject</th>
+        <th width="150px">Badge Progress</th>
+        <th width="400px">Courses Taken in This Subject</th>
+      </tr>
+
+      <% @current_profile.badges.order('progress DESC').each do |b| %>
+        <tr>
+          <td><div class="badge_box"><div class="badge_subject"><%= b.subject %></div></div></td>
+          <td>
+            <% if b.progress >= 15 %>
+              Completed!
+            <% else %>
+              <meter value="<%= b.progress %>" min="0" max="15"></meter><br>
+              <span style="font-size: 0.8em;"><%= b.progress%>/15</span>
+            <% end %>
+          </td>
+          <td>
+            <% b.courses.each do |c| %>
+              <span style="font-weight: bold; color: #499;"><%= c.subject %> <%= c.course_number %></span> -
+              <% if c.status == 1 %>
+                Passed
+              <% else %>
+                Failed
+              <% end %>
+              (Grade: <%= c.grade %>) <br/>
+            <%end%>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
 </div>
