@@ -63,7 +63,11 @@
 					<%= link_to p.pname, p, :class => "profile_name_link" %><br>
 
 					<%= p.faculty %><br>
-					<span style="color: #749;">Year: <%= p.year %></span><br>
+					<% if p.graduated == false %>
+						<span style="color: #749;">Year: <%= p.year %></span><br>
+					<% else %>
+						<span style="color: #A23;">Graduated!</span><br>
+					<% end %>
 					<%if p.current_gpa == 0.0 && p.courses.length ==0 %>
 				     <span style="color: #749;">GPA: N/A</span>
 				  <% else %>

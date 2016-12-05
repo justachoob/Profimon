@@ -18,11 +18,15 @@
   <%end%>
 </p>
 
-<p>
-  <strong>Year:</strong>
-  <%= @profile.year %>
-  <meter value="<%= @profile.yearProgress %>" min="0" max="5" style="margin-left: 10px;"></meter>
-</p>
+<% if @profile.graduated == false %>
+  <p>
+    <strong>Year:</strong>
+    <%= @profile.year %>
+    <meter value="<%= @profile.yearProgress %>" min="0" max="5" style="margin-left: 10px;"></meter>
+  </p>
+<% else %>
+  <p><strong>Graduated!</strong></p>
+<% end %>
 
 <p>
   <strong>User:</strong>
