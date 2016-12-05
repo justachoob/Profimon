@@ -75,4 +75,68 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     get profile_url(@profile)
     assert_response :success
   end
+  
+  test "should reach about page" do
+    log_in_as(users(:one))
+    get "/about"
+    assert_response :success
+    
+    assert_select "h2", "Your Mission"
+    assert_select "h3", "Credits"
+  end
+  
+  test "should have modal button" do
+    log_in_as(users(:one))
+    get "/users/1"
+    assert_response :success
+    
+    assert_select "button", "?"
+    assert_select "h2", "Welcome to your profile page!"
+    
+  end
+  
+  test "should have modal button on classes selection page" do
+    log_in_as(users(:one))
+    get "/users/1"
+    assert_response :success
+    
+    get "/classes/select?profile=1"
+    assert_response :success
+    
+    assert_select "button", "?"
+    assert_select "h2", "Select a course for your character!"
+    
+  end
+  
+  test "should have modal button on classes battle page" do
+    log_in_as(users(:one))
+    get "/users/1"
+    assert_response :success
+
+    get classes_select_url, params: { "profile"=>"1" }
+    assert_response :success
+    post enroll_url, params: { "subject"=>{"subject_id"=>"CMPT"}, "course_number"=>"102", "profile"=>{"id"=>"1"}, "commit"=>"Enroll"}
+    
+    assert_response :redirect
+    get class_battles_load_url, params:  {"course_number"=>"102", "current_profile_id"=>"1", "subject"=>"CMPT"}
+    assert_response :success
+    
+    assert_select "button", "?"
+    assert_select "h2", "Class has started! It's you against the Profimon!"
+    
+  end
+    
+  test "should show badges page content" do
+    log_in_as(users(:one))
+    get "/users/1"
+    assert_response :success
+    
+    get "/profiles/1"
+    assert_response :success
+    
+    get "/badges/1?current_profile_id=1", params: { current_profile_id: 1, id: 1}
+    assert_response :success
+    
+    assert_select "p", "All badges for this profile are:"
+  end
 end
