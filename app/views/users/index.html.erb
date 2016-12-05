@@ -28,7 +28,7 @@
           <%if c.current_gpa == 0.0 && c.courses.length == 0 %>
 				     (GPA: N/A)
 				  <% else %>
-				     (GPA:<%= c.current_gpa %>)
+				     (GPA: <%= c.current_gpa.round(2) %>)
 				  <%end%><br>
         <% end %>
       </td>

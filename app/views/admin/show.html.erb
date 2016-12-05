@@ -1,4 +1,9 @@
 <div class="main" style="text-align: center;">
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
   <h1>Admin Settings</h1>
   <p style="font-size:1.2em; margin-bottom: 40px;">Select one of the lists below to view/edit:</p>
 
