@@ -13,6 +13,7 @@ class CoursesController < ApplicationController
 
     change_types
     @profile = Profile.find(course_params[:profile_id])
+    @notGradded = !(@profile.graduated)
     @badgeFound = false
     @badge
     @profile.badges.each do |b| #iterate through each of them to see if the badge is there
@@ -53,24 +54,36 @@ class CoursesController < ApplicationController
 
     @course.save
     @profile.save
-    redirect_to root_url, notice: "The course has been added to your progress"
+    if (@notGradded && @profile.graduated) #if this course was what made the user graduate
+      redirect_to root_url, notice: "Congratlations! You have graduated!"
+    else
+      if (@course.timesTaken>3)
+        @notice = "You have exceeded the retake limit for the course, it will not be added to your progress"
+      elsif (course_params[:grade].to_f<1)
+        @notice = "You failed the course"
+      else
+        @notice = "The course has been added to your progress"
+      end
+      redirect_to root_url, notice: @notice
+    end
   end
 
   def updateCourse(target, grade, profile)
-
+    @previousStatus = (target.status)
     if ((target.status==0)&&(target.timesTaken<3))#if there's reason to potentially update
-      target.grade = grade
+      if (grade.to_i>target.grade.to_i)
+        target.grade = grade
+      end
       if (grade.to_f>=2)
         target.status=1
         BadgesController.updateProgress(target.badge_id, target.course_number)
       end
     end
-    
     #increment times taken
     target.timesTaken = target.timesTaken+1
 
-    #increment year progess if not already graduated
-    if (!profile.graduated)
+    #increment year progess if not already graduated, and they went from pass to fail above this
+    if (!profile.graduated && @previousStatus==0 && target.status==1)
       if ((target.course_number/100).to_i == profile.year.to_i)
         profile.yearProgress = profile.yearProgress + 1
         if (profile.yearProgress == 5)
