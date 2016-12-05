@@ -390,7 +390,13 @@ function setGrade(mark){
       <td style="text-align: center;">
         <!-- We will need to have an image for a profimon and put it here -->
         <!-- Right now, this just uses the character's avatar -->
-        <%= image_tag @current_profile.avatar.url(:medium), :size => "200x200" %>
+        <%if @instructor_name == "Chun Chan" %>
+          <%= image_tag "profimon_avatar/bobby.jpg", :size => "200x200" %>
+        <%else%>
+          <%= image_tag "profimon_avatar/#{rand(6)}.jpg", :size => "200x200" %>
+        <%end%>
+
+
 
         <!-- This is the profimon's stamina bar-->
         <meter value="200" min="0" max="200" id="profimon_stamina"></meter>
