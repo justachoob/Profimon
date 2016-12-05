@@ -82,7 +82,7 @@ function setGrade(mark){
   //this is coded very similar to the midterm, so these functions need to be combined
   //once we have the database stuff worked out
   function final(){
-    profMove("Time for the final exam!", 160, 0, 20);
+    profMove("Time for the final exam!", 150, 0, 0);
     // var out = document.getElementById("profimon_speech");
     // var notif = "Time for the final exam!";
     // var current_grade = knowledge - finalDifficulty;
@@ -109,27 +109,30 @@ function setGrade(mark){
     else if (week == 10){
       final();
     }
+    else if (profimon_stamina == 0){
+      profMove("Skip Class", 0, 0, 0);
+    }
     else {
       if (week == 1)
-        profMove("<%= @prof_skill1.name %>", <%= @prof_skill1.knowledge %>, <%= @prof_skill1.homework %>, 20);
+        profMove("<%= @prof_skill1.name %>", <%= @prof_skill1.knowledge %>, <%= @prof_skill1.homework %>, <%= @prof_skill1.stamina %>);
       else if (week == 2)
-        profMove("<%= @prof_skill2.name %>", <%= @prof_skill2.knowledge %>, <%= @prof_skill2.homework %>, 20);
+        profMove("<%= @prof_skill2.name %>", <%= @prof_skill2.knowledge %>, <%= @prof_skill2.homework %>, <%= @prof_skill2.stamina %>);
       else if (week == 3)
-        profMove("<%= @prof_skill3.name %>", <%= @prof_skill3.knowledge %>, <%= @prof_skill3.homework %>, 20);
+        profMove("<%= @prof_skill3.name %>", <%= @prof_skill3.knowledge %>, <%= @prof_skill3.homework %>, <%= @prof_skill3.stamina %>);
       else if (week == 4)
-        profMove("<%= @prof_skill4.name %>", <%= @prof_skill4.knowledge %>, <%= @prof_skill4.homework %>, 20);
+        profMove("<%= @prof_skill4.name %>", <%= @prof_skill4.knowledge %>, <%= @prof_skill4.homework %>, <%= @prof_skill4.stamina %>);
       else if (week == 5)
-        profMove("<%= @prof_skill5.name %>", <%= @prof_skill5.knowledge %>, <%= @prof_skill5.homework %>, 20);
+        profMove("<%= @prof_skill5.name %>", <%= @prof_skill5.knowledge %>, <%= @prof_skill5.homework %>, <%= @prof_skill5.stamina %>);
       else if (week == 6)
-        profMove("<%= @prof_skill6.name %>", <%= @prof_skill6.knowledge %>, <%= @prof_skill6.homework %>, 20);
+        profMove("<%= @prof_skill6.name %>", <%= @prof_skill6.knowledge %>, <%= @prof_skill6.homework %>, <%= @prof_skill6.stamina %>);
       else if (week == 7)
-        profMove("<%= @prof_skill7.name %>", <%= @prof_skill7.knowledge %>, <%= @prof_skill7.homework %>, 20);
+        profMove("<%= @prof_skill7.name %>", <%= @prof_skill7.knowledge %>, <%= @prof_skill7.homework %>, <%= @prof_skill7.stamina %>);
       else if (week == 8)
-        profMove("<%= @prof_skill8.name %>", <%= @prof_skill8.knowledge %>, <%= @prof_skill8.homework %>, 20);
+        profMove("<%= @prof_skill8.name %>", <%= @prof_skill8.knowledge %>, <%= @prof_skill8.homework %>, <%= @prof_skill8.stamina %>);
       else if (week == 9)
-        profMove("<%= @prof_skill9.name %>", <%= @prof_skill9.knowledge %>, <%= @prof_skill9.homework %>, 20);
+        profMove("<%= @prof_skill9.name %>", <%= @prof_skill9.knowledge %>, <%= @prof_skill9.homework %>, <%= @prof_skill9.stamina %>);
       else
-        profMove("<%= @prof_skill0.name %>", <%= @prof_skill0.knowledge %>, <%= @prof_skill0.homework %>, 20);
+        profMove("<%= @prof_skill0.name %>", <%= @prof_skill0.knowledge %>, <%= @prof_skill0.homework %>, <%= @prof_skill0.stamina %>);
       // var out = document.getElementById("log2");
     }
   }
@@ -150,7 +153,9 @@ function setGrade(mark){
     out.innerHTML = notif;
     // Update profimon stamina bar
     var pstamina = document.getElementById("profimon_stamina");
-    profimon_stamina -= 20;   // Need to update this later to reflect the stamina required for the move
+    profimon_stamina -= move_stamina;
+    if (profimon_stamina < 0)
+      profimon_stamina = 0;
     pstamina.setAttribute("value", String(profimon_stamina));
     var profimon_stamina_text = document.getElementById("profimon_stamina_text");
     profimon_stamina_text.innerHTML = String(profimon_stamina) + "/200";
@@ -168,7 +173,7 @@ function setGrade(mark){
     modifyStats();
   }
   function midterm(){
-    profMove("Time for the midterm!", 110, 10, 20);
+    profMove("Time for the midterm!", 110, 10, 0);
     // var out = document.getElementById("log2");
     // var notif = "Time for the midterm!";
     // var grde = knowledge - midtermDifficulty;
