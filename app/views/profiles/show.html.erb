@@ -18,7 +18,7 @@
     <strong>Current GPA:</strong> N/A
   <% else %>
     <strong>Current GPA:</strong>
-    <%= @profile.current_gpa %>
+    <%= @profile.current_gpa.round(2) %>
   <%end%>
 </p>
 <p>

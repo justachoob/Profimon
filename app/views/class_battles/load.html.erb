@@ -349,7 +349,7 @@ function setGrade(mark){
         <meter value="200" min="0" max="200" id="player_stamina"></meter>
 
         <p><%= @current_profile.pname %></p>
-        <p>GPA: <%= @current_profile.current_gpa %></p>
+        <p>GPA: <%= @current_profile.current_gpa.round(2) %></p>
       </td>
       <td>
         <div style="float: left;">
