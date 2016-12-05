@@ -66,5 +66,15 @@ class CoursesFlowTest < ActionDispatch::IntegrationTest
     assert_equal "The course has been added to your progress", flash[:notice]
   end
   
+  test "should get courses taken" do
+    log_in_as(users(:one))
+    get "/profiles/1", params: {"id"=>"1"}
+    assert_response :success
+    
+    get "/courses/1?current_profile_id=1", params: {"current_profile_id"=>"1", "id"=>"1"}
+    assert_response :success
+    
+    assert_select "p", "All courses taken are:"
+  end
   
 end
