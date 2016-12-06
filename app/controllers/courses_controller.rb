@@ -55,7 +55,7 @@ class CoursesController < ApplicationController
     @course.save
     @profile.save
     if (@notGradded && @profile.graduated) #if this course was what made the user graduate
-      redirect_to root_url, notice: "Congratlations! You have graduated!"
+      redirect_to  controller: "profiles", action: "grad", profile: @profile.id
     else
       if (@course.timesTaken>3)
         @notice = "You have exceeded the retake limit for the course, it will not be added to your progress"
