@@ -23,7 +23,7 @@
       <td><%= u.name %></td>
       <td>
         <% @characters = Profile.where(:user_id => u.id) %>
-        <% @characters.each do |c| %>
+        <% @characters.order(:pname).each do |c| %>
           <%= link_to c.pname, profile_path(c) %>
           <%if c.current_gpa == 0.0 && c.courses.length == 0 %>
 				     (GPA: N/A)
