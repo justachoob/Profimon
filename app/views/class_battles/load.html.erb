@@ -8,9 +8,8 @@
   var profimon_stamina = 200;
   var week = 1;
   var midtermWeek = 5; // Midterm will be in Week 4, 5, 6, or 7
-  // var midtermDifficulty = 3; //calculate difficulties based on year instead of hard coding them like this
-  // var finalDifficulty = 6;
   var courseDifficulty = 2;
+
   //moves the game forward, and ends after 10 weeks
   function nextWeek(){
     week += 1;
@@ -19,14 +18,12 @@
       endClass();
     }
   }
+
   function getResult(grade) {
     document.getElementById("course_grade").value = grade;
   }
+
   //ends the course
-  //I disabled the buttons since that was the most obvious way to stop the game
-  //Later on we need to add a button that sends the user to their profile page
-  //while also sending the data of the completed course to their profile
-    //right now we can't leave this page "normally"
   function endClass(){
     document.getElementById("skill_button1").disabled = true;
     document.getElementById("skill_button2").disabled = true;
@@ -38,7 +35,6 @@
     var newHeader = "<%= @subject %> <%= @course_number %>";
     newHeader = newHeader.concat(" is complete!");
     document.getElementById("classStatus").innerHTML = newHeader;
-    //this needs to be rebalanced, it's way to easy to get an A+
     var result = "Grade points for this course: ";
     var finalGrade = grade / 25;
     if (finalGrade>4) finalGrade = 4;
@@ -47,6 +43,7 @@
     getResult(finalGrade);
 
   }
+
 //sets the desired grade for the sale pf testing
 //1=A
 //2=B
@@ -69,6 +66,7 @@ function setGrade(mark){
   }
   document.getElementById("finish_battle").style.visibility = "visible";
 }
+
   //does the calculations
   function modifyStats(){
     stamina -= current_stamina;
@@ -79,28 +77,14 @@ function setGrade(mark){
     else if (stamina > 200) stamina = 200;
     if (grade < 0) grade = 0;
   }
+
   //this is coded very similar to the midterm, so these functions need to be combined
   //once we have the database stuff worked out
   function final(){
     profMove("Time for the final exam!", 150, 0, 0);
-    // var out = document.getElementById("profimon_speech");
-    // var notif = "Time for the final exam!";
-    // var current_grade = knowledge - finalDifficulty;
-    // if (stamina<3){
-    //   notif = notif.concat("<br/> You did not have enough stamina, and failed!");
-    //   grade -= finalDifficulty;
-    //   stamina = 0;
-    //   notif = addInfo(notif, 0, 2, -finalDifficulty);
-    // }
-    // else{
-    //   notif = addInfo(notif, 0, 2, grde);
-    //   stamina -= 2;
-    // grade += grde;
-    // }
-    // out.innerHTML = notif;
   }
+
    //prof decides what to do
-    //(can only use Tutorial and Lecture as random skills at the moment)
   function profTurn(){
     if (week == midtermWeek){
       midterm();
@@ -136,6 +120,7 @@ function setGrade(mark){
       // var out = document.getElementById("log2");
     }
   }
+
   //prof does their random move
   function profMove(move, move_knowledge, move_homework, move_stamina){
     var out = document.getElementById("profimon_speech");
@@ -143,13 +128,6 @@ function setGrade(mark){
     notif = notif.concat(" used ");
     notif = notif.concat(move);
     notif = notif.concat("!");
-    // if (stamina < 0){
-    //   if (stamina + current_stamina < 0){
-    //     notif = notif.concat("<br/>You received no benefit because your stamina was too low!");
-    // return;
-    //   }
-    // }
-    // notif = addInfo(notif, move_knowledge, move_homework, move_stamina);
     out.innerHTML = notif;
     // Update profimon stamina bar
     var pstamina = document.getElementById("profimon_stamina");
@@ -172,35 +150,11 @@ function setGrade(mark){
 
     modifyStats();
   }
+
   function midterm(){
     profMove("Time for the midterm!", 110, 10, 0);
-    // var out = document.getElementById("log2");
-    // var notif = "Time for the midterm!";
-    // var grde = knowledge - midtermDifficulty;
-    // if (stamina<2){
-    //  notif = notif.concat("<br/> You did not have enough stamina, and failed!");
-    //  grade -=midtermDifficulty;
-    //  stamina = 0;
-    //  notif = addInfo(notif, 0, 2, -midtermDifficulty);
-    // }
-    // else{
-    //  notif = addInfo(notif, 0, 2, grde);
-    //  stamina -= 2;
-    // grade += grde;
-    // }
-    // out.innerHTML = notif;
   }
-  //puts all the modifiers there for the sake of testing
-  //maybe we should take this out later
-  function addInfo(string, current_knowledge, current_homework, current_stamina){
-    string = string.concat("<br/> k ");
-    string = string.concat(current_knowledge);
-    string = string.concat("<br/> s ");
-    string = string.concat(current_homework);
-    string = string.concat("<br/> g ");
-    string = string.concat(current_stamina);
-    return string;
-  }
+
   function playerMove(move, move_knowledge, move_homework, move_stamina){
     var out = document.getElementById("player_speech");
     // Clear profimon's speech
@@ -234,12 +188,9 @@ function setGrade(mark){
     // modifyStats();
     setTimeout(nextWeek, 1000);
   }
+
   //shows the stats
   function display_info() {
-    // var out = document.getElementById("knowledge");
-    // out.innerHTML = knowledge;
-    // out = document.getElementById("stamina");
-    // out.innerHTML = stamina;
     out = document.getElementById("current_grade");
     if (week == 1) {
       out.innerHTML = "Current grade: " + grade + "\%";
@@ -275,12 +226,8 @@ function setGrade(mark){
   }
 
   function battleStart(){
-    // var out = document.getElementById("knowledge");
-    // out.innerHTML = knowledge;
-    // document.getElementById("battle_back_button").style.visibility = "hidden";
     midtermWeek = Math.floor((Math.random() * 4) + 4);
     courseDifficulty = <%= @course_difficulty %>;
-    // profTurn();
     display_info();
   }
 
@@ -365,6 +312,9 @@ function setGrade(mark){
       <p>The midterm will happen sometime between Week 4 to Week 7 (inclusive). Make sure you study for it!
       <h2>The Final</h2>
       <p>The final will happen in Week 10. You really want to study for this!</p>
+      <h2>Receiving a Grade for the Course</h2>
+      <p>After the 10 weeks are over, your grade percentage will be multiplied by 4, and this will be your character's grade for the course.
+        This value will be counted towards your character's overall GPA.</p>
     </div>
   </div>
 
@@ -392,9 +342,6 @@ function setGrade(mark){
               <p id="player_speech"></p>
           </div>
 
-          <!--Add an onclick method to each of these buttons-->
-          <!--All buttons should go to the same onclick method-->
-          <!--Each button passes different values as parameters depending on the skill's stats-->
           <div style="margin-left: 20px;">
             <button type="button" id="skill_button1" class="skill_button" data-tooltip="Knowledge: 100 Homework: 25 Stamina: 60" onclick = "playerMove('Study', 100, 25, 60)">
               Study
@@ -417,20 +364,15 @@ function setGrade(mark){
           </div>
         </div>
         <div style="float: right; height: 70px; width: 200px">
-          <!-- Put the name of the profimon's skill here -->
            <p id="profimon_speech"></p>
         </div>
       </td>
       <td style="text-align: center;">
-        <!-- We will need to have an image for a profimon and put it here -->
-        <!-- Right now, this just uses the character's avatar -->
         <%if @instructor_name == "Chun Chan" %>
           <%= image_tag "profimon_avatar/bobby.jpg", :size => "200x200" %>
         <%else%>
           <%= image_tag "profimon_avatar/#{rand(6)}.jpg", :size => "200x200" %>
         <%end%>
-
-
 
         <!-- This is the profimon's stamina bar-->
         <meter value="200" min="0" max="200" id="profimon_stamina"></meter>
@@ -441,18 +383,9 @@ function setGrade(mark){
     </tr>
   </table>
   <p id = "current_grade" style="text-align: center; font-size: 1.5em; color: #283;"></p>
-  <!-- this is where the battle "happens", change it when possible-->
+
   <p id = "log" style="text-align: center; font-size: 1.3em; font-weight: bold;"></p>
-  <!-- <p id = "log2">Course Difficulty (1.x = low, 2.x = medium, 3.x = high): <%= @course_difficulty %></p>-->
-  <!-- <p id = "log2"></p>-->
-  <!-- <p id = "log3"></p>-->
-  <!-- <p id = "info">STATS:<br/>-->
-  <!--  Knowledge: <bdi id="knowledge"></bdi><br/>-->
-  <!--  Stamina: <bdi id="stamina"></bdi><br/>-->
-  <!--  Grade: <bdi id="grade"></bdi><br/>-->
-  <!--  Current week: <bdi id="curWeek"></bdi><br/>-->
-  <!--  Midterm week: <bdi id="midterm"></bdi><br/> -->
-  <!-- </p> -->
+
   <div id = "form">
 
    <%= form_for @course ,:url => {:controller => "courses", :action => "create"} do |f| %>
@@ -472,6 +405,3 @@ function setGrade(mark){
 
 </div>
 </body>
-
-
-<!-- debug(params) -->
