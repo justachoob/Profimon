@@ -77,4 +77,14 @@ class CoursesFlowTest < ActionDispatch::IntegrationTest
     assert_select "h1", "testuser1's Coursework"
   end
   
+  test "should redirect to login when attempt to get grad page" do
+    get "/profiles/grad/1", params: {"profile"=>"1"}
+    assert_redirected_to login_url
+  end
+  
+  test "should redirect to user page when not fully progressed to grad page" do
+    log_in_as(users(:one))
+    get "/profiles/grad/1", params: {"profile"=>"1"}
+    assert_redirected_to "/users/1"
+  end
 end
