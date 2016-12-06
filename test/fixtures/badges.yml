@@ -3,16 +3,16 @@
 one:
   subject: MyString
   profile_id: 1
-  completed: false
+  completed: true
   first_year: 1
   second_year: 1
   third_year: 1
   fourth_year: 1
 
 two:
-  subject: MyString
+  subject: iono
   profile_id: 1
-  completed: false
+  completed: true
   first_year: 1
   second_year: 1
   third_year: 1
