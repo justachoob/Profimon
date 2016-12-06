@@ -23,7 +23,7 @@ class ClassBattlesController < ApplicationController
       @instructor_name = class_info['instructor'][0]['name']
     end
     @room_number = "Online"
-    if class_info['courseSchedule'][0]['buildingCode'] != nil
+    if class_info['courseSchedule'] != nil && class_info['courseSchedule'][0]['buildingCode'] != nil
       @room_number = class_info['courseSchedule'][0]['buildingCode'] + " " + class_info['courseSchedule'][0]['roomNumber']
     end
 
