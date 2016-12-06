@@ -3,24 +3,32 @@
 		<div class="notice"><%= flash[:notice] %></div>
 <% end %>
   <h1><%= @profile.pname %> has graduated!</h1>
-  
-  <p>GPA: <%=@profile.current_gpa.round(2)%><p>
-    
-  <p>Completed badges</p>
+
+  <h2 style="text-align: center;">Final GPA: <%=@profile.current_gpa.round(2)%></h2>
+
+	<br>
+
+	<div style="text-align: center;">
+  <h2 style="color: #749;">Badges Earned</h2>
   <% @profile.badges.order('progress DESC').each do |b| %>
-   <p>
+
      <% if b.progress >= 15 %>
-      <%= b.subject %>
+      <div class="badge_display_grad"><div class="badge_subject"><%= b.subject %></div></div>
      <% end %>
-    </p>
+
   <% end %>
-  
-  <p>You have completed a Profimon degree!</p>
-  
-  <p>You may contine to play on this profile to get more badges, or try graduating with other profiles.</p>
-  
+
+	<br><br>
+
+  <h3>Congratulations for completing a Profimon degree!</h3>
+
+  <p>You may continue to play on this character to get more badges, or try graduating with other characters.</p>
+
   <p>Thanks for playing!</p>
-  
-  <p>-The Profimon Group</p>
-  
+
+  <p>- The Profimon Group</p>
+
+	<br>
+
   <%= link_to 'Back', :back, class: "profile_form_button" %>
+</div>

@@ -196,3 +196,19 @@ h4.subtitle {
   text-decoration: none;
   cursor: pointer;
 }
+
+.badge_display_grad {
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+  color: white;
+  background-color: #963;
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+}
+
+.badge_display_grad .badge_subject {
+  margin-top: 25px;
+  text-align: center;
+}
