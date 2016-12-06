@@ -51,8 +51,9 @@ class CoursesController < ApplicationController
       @course.badge_id = @badge.id
       updateCourse(@course, @course.grade, @profile)
     end
-
     @course.save
+    @profile.save
+    gradCheck(@profile)
     @profile.save
     if (@notGradded && @profile.graduated) #if this course was what made the user graduate
       redirect_to  controller: "profiles", action: "grad", profile: @profile.id
@@ -61,6 +62,8 @@ class CoursesController < ApplicationController
         @notice = "You have exceeded the retake limit for the course, it will not be added to your progress"
       elsif (course_params[:grade].to_f<1)
         @notice = "You failed the course"
+      elsif ((@profile.yearProgress > 4)&&(@profile.year==4))
+        @notice = "You have enough year progress to graduate but need more badges"
       else
         @notice = "The course has been added to your progress"
       end
@@ -85,21 +88,31 @@ class CoursesController < ApplicationController
     #increment year progess if not already graduated, and they went from pass to fail above this
     if (!profile.graduated && @previousStatus==0 && target.status==1)
       if ((target.course_number/100).to_i == profile.year.to_i)
-        profile.yearProgress = profile.yearProgress + 1
-        if (profile.yearProgress == 5)
+        if (profile.yearProgress<5)
+          profile.yearProgress = profile.yearProgress + 1
+        end
+        if ((profile.yearProgress > 4)&&(profile.year<4))
           profile.yearProgress = 0
-          if (profile.year<4)
-            profile.year = profile.year + 1
-          else
-            profile.graduated = true
-          end
+          profile.year = profile.year + 1
         end
       end
     end
-
-
   end
 
+  def gradCheck(profile)
+    #graduation check
+    if ((profile.year==4)&&(profile.yearProgress>4))
+      @badgesDone = 0
+      profile.badges.each do |b|
+        if (b.progress > 14)
+          @badgesDone = @badgesDone+1
+        end
+      end
+      if (@badgesDone>1)
+        profile.graduated = true
+      end
+    end
+  end
 
   def destroy
     @course = Course.find(params[:id])
