@@ -139,4 +139,21 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     
     assert_select "h1", "testuser1's Badges"
   end
+  
+  test "should have Profimon difficulty classes battle page" do
+    log_in_as(users(:one))
+    get "/users/1"
+    assert_response :success
+
+    get classes_select_url, params: { "profile"=>"1" }
+    assert_response :success
+    post enroll_url, params: { "subject"=>{"subject_id"=>"CMPT"}, "course_number"=>"102", "profile"=>{"id"=>"1"}, "commit"=>"Enroll"}
+    
+    assert_response :redirect
+    get class_battles_load_url, params:  {"course_number"=>"102", "current_profile_id"=>"1", "subject"=>"CMPT"}
+    assert_response :success
+    
+    assert_select "h5", "Difficulty: 2.7"
+  end
+    
 end
