@@ -55,7 +55,9 @@ class CoursesController < ApplicationController
     @profile.save
     gradCheck(@profile)
     @profile.save
-    if (@notGradded && @profile.graduated) #if this course was what made the user graduate
+    if (@notGradded && @profile.year==4 && @profile.yearProgress>4 && @profile.badges.where("progress >= 15").count >= 2) #if this course was what made the user graduate
+      @profile.graduated = true
+      @profile.save
       redirect_to  controller: "profiles", action: "grad", profile: @profile.id
     else
       if (@course.timesTaken>3)
