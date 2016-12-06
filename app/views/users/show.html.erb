@@ -76,7 +76,7 @@
 				  <%end%><br>
 					<!--<%= link_to 'Enroll', classes_select_path(:current_profile => {:id => p.id, :pname => p.pname}), class: "profile_form_button_small" %>-->
 					<%= link_to 'Enroll', {:controller => "classes", :action => "select", :profile => p.id }, class: "profile_form_button_small" %>
-					<%= link_to 'GRAD' ,  {:controller => "profiles", :action => "grad", :profile => p.id } %>
+					<!--<= link_to 'GRAD' ,  {:controller => "profiles", :action => "grad", :profile => p.id } %>-->
 				</td>
 			<% end %>
 		</tr>
