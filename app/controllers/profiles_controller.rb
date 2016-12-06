@@ -36,16 +36,12 @@ class ProfilesController < ApplicationController
     end
   end
   
-  def graduate
-    
-    flash[:notice] = "Went through controller"
-   # @current_profile = Profile.find(params[:profile])
-  #  if (@current_profile.graduated==false)
-  #    flash[:notice] = "You cannot access that page"
-  #   redirect_to(user_path( :id => session[:user_id]))
-  #  else
-  #    redirect_to(grad)
-  # end
+  def grad
+   @profile = Profile.find(params[:profile])
+    if (@profile.graduated==false)
+      flash[:notice] = "You cannot access that page"
+     redirect_to(user_path( :id => session[:user_id]))
+   end
   end
 
   # PATCH/PUT /profiles/1
